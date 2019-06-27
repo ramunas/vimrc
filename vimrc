@@ -24,7 +24,6 @@ map <leader>t :NERDTree<cr>
 
 Plug 'flazz/vim-colorschemes'
 
-
 Plug 'bling/vim-airline'
 
 if !exists('g:airline_symbols')
@@ -41,16 +40,6 @@ let g:airline_symbols.linenr = ''
 
 
 Plug 'tpope/vim-fugitive'
-
-
-Plug 'neovimhaskell/haskell-vim'
-let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-
 
 
 Plug 'Shougo/denite.nvim'
@@ -78,7 +67,13 @@ else
 endif
 
 
-Plug 'Shougo/deoplete.nvim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 let g:deoplete#enable_at_startup = 1
 
 
@@ -173,20 +168,17 @@ let perl_want_scope_in_variables = 1
 let perl_extended_vars = 1
 let perl_string_as_statement = 1
 let python_highlight_all = 1
-" Disable auto spell checking
-" all - to all the file types
-" none - for files which do not have a filetype
-" let spell_auto_type=''
 
 " where to search for `tags' file
 set tags=./tags,./../tags
 
 
 map <leader>n :nohlsearch<cr>
-map <leader>m :nohlsearch<cr>
+map <leader>m <leader>n
 
 
 " Some basic mappings
+map Y y$
 map K k
 imap <c-a> <c-o><home>
 imap <c-e> <c-o><end>
@@ -202,8 +194,6 @@ cnoremap <c-f> <right>
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 
-map Y y$
-
 
 
 let g:solarized_termcolors=256
@@ -211,32 +201,24 @@ set background=light
 colorscheme solarized
 
 
-" disable lexical error highlighting in tex files
-let g:tex_no_error=1
-
-
 " Make <esc> behave in terminal window like in an ordinary window.
 if has('nvim')
     tnoremap <esc> <c-\><c-n>
 endif
-
-
 
 " Project specific settings
 " autocmd BufNewFile,BufRead
 "             \ /Users/ramunas/Dropbox/Projects/BroadastSessions/*.tex,/Users/ramunasgutkovas/Projects/BroadastSessions/*.tex
 "             \ set tabstop=4 shiftwidth=4 ft=tex spell spelllang=en_gb
 
-
 autocmd BufNewFile,BufRead *.ML setf sml
 autocmd FileType qf map <buffer> q :bd<cr>
 autocmd FileType help map <buffer> q :bd<cr>
 autocmd BufNewFile,BufRead *.tex set ft=tex
 
-
 command ClearTrailingWhitespace normal mx<cr>:keepjumps keeppatterns %s/\s\+$//g<cr>`x
 command! VimRC :e $MYVIMRC
 command! HideGutter sign unplace *
 
-highlight SignColumn ctermbg=DarkCyan ctermfg=DarkCyan
+" highlight SignColumn ctermbg=DarkCyan ctermfg=DarkCyan
 
