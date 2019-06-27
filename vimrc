@@ -8,7 +8,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync
-  " autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 
@@ -59,13 +58,6 @@ endfunction
 
 nnoremap <leader>f :Denite file<cr>
 nnoremap <leader>b :Denite buffer<cr>
-
-
-if has('nvim')
-else
-    Plug 'roxma/vim-hug-neovim-rpc'
-    Plug 'roxma/nvim-yarp'
-endif
 
 
 if has('nvim')
