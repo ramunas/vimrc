@@ -114,6 +114,8 @@ augroup LSP
 augroup END
 
 
+Plug 'ramunas/select'
+
 call plug#end()
 
 
