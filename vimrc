@@ -108,6 +108,11 @@ augroup END
 
 
 Plug 'ramunas/select'
+" Disable deoplete for the Select buffers
+" if g:loaded_deoplete
+if g:deoplete#enable_at_startup
+    autocmd FileType Select call deoplete#custom#buffer_option('auto_complete', v:false)
+endif
 
 call plug#end()
 
