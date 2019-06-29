@@ -57,7 +57,8 @@ endfunction
 
 
 nnoremap <leader>f :Denite file<cr>
-nnoremap <leader>b :Denite buffer<cr>
+" nnoremap <leader>b :Denite buffer<cr>
+nnoremap <leader>b :call Buffers()<cr>
 
 
 if has('nvim')
