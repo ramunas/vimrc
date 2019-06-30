@@ -42,23 +42,18 @@ let g:airline_symbols.linenr = ''
 Plug 'tpope/vim-fugitive'
 
 
-Plug 'Shougo/denite.nvim'
-
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-endfunction
-
-
-nnoremap <leader>f :Denite file<cr>
-" nnoremap <leader>b :Denite buffer<cr>
-nnoremap <leader>b :call Buffers()<cr>
+" Plug 'Shougo/denite.nvim'
+"
+" " Define mappings
+" autocmd FileType denite call s:denite_my_settings()
+" function! s:denite_my_settings() abort
+"   nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+"   nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+"   nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+"   nnoremap <silent><buffer><expr> q denite#do_map('quit')
+"   nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+"   nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+" endfunction
 
 
 if has('nvim')
@@ -108,6 +103,8 @@ augroup END
 
 
 Plug 'ramunas/select'
+nnoremap <leader>b :call Buffers()<cr>
+nnoremap <leader>f :call Files()<cr>
 " Disable deoplete for the Select buffers
 " if g:loaded_deoplete
 if g:deoplete#enable_at_startup
