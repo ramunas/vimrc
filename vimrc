@@ -99,6 +99,7 @@ endfunction()
 augroup LSP
   autocmd!
   autocmd FileType cpp,c call SetLSPShortcuts()
+  autocmd FileType cpp,c map <buffer> <c-]> :call LanguageClient#textDocument_definition()<CR>
 augroup END
 
 
