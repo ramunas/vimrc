@@ -180,6 +180,10 @@ cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 
 
+map <c-j> <c-w>-
+map <c-k> <c-w>+
+map <c-h> <c-w><
+map <c-l> <c-w>>
 
 let g:solarized_termcolors=256
 set background=light
