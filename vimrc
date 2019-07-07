@@ -89,10 +89,16 @@ augroup LSP
   autocmd!
   autocmd FileType cpp,c call SetLSPShortcuts()
   autocmd FileType cpp,c map <buffer> <c-]> :call LanguageClient#textDocument_definition()<CR>
+  " LanguageClient#textDocument_typeDefinition()
+  " LanguageClient#textDocument_implementation()
+  " LanguageClient#textDocument_rename(name) - renames identifier under cursor
+  "
+  " LanguageClient_textDocument_documentSymbol() - lists symbols, use with
+  " select
 augroup END
 
 
-Plug 'ramunas/select'
+Plug 'ramunas/vim-select'
 nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>f :call Files()<cr>
 " Disable deoplete for the Select buffers
