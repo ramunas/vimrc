@@ -4,9 +4,12 @@ if !has("nvim") | set nocompatible | endif
 
 
 " install Plug if not instaled
-if empty(glob('~/.vim/autoload/plug.vim'))
-  !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let s:plug_path = '~/.vim/autoload/plug.vim'
+if has("nvim") | let s:plug_path = '~/.config/nvim/autoload/plug.vim' | endif
+let s:plug_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+
+if empty(glob(s:plug_path))
+    execute "!curl -fLo " . s:plug_path . " --create-dirs " . s:plug_url
   autocmd VimEnter * PlugInstall --sync
 endif
 
