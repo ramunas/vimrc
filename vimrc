@@ -89,6 +89,7 @@ augroup LSP
   autocmd!
   autocmd FileType cpp,c call SetLSPShortcuts()
   autocmd FileType cpp,c map <buffer> <c-]> :call LanguageClient#textDocument_definition()<CR>
+  autocmd FileType cpp,c map <buffer> gf :call LanguageClient#textDocument_definition()<CR>
   " LanguageClient#textDocument_typeDefinition()
   " LanguageClient#textDocument_implementation()
   " LanguageClient#textDocument_rename(name) - renames identifier under cursor
@@ -214,9 +215,20 @@ autocmd FileType qf map <buffer> q :bd<cr>
 autocmd FileType help map <buffer> q :bd<cr>
 autocmd BufNewFile,BufRead *.tex set ft=tex
 
+
 command ClearTrailingWhitespace normal mx<cr>:keepjumps keeppatterns %s/\s\+$//g<cr>`x
 command! VimRC :e $MYVIMRC
 command! HideGutter sign unplace *
 
 " highlight SignColumn ctermbg=DarkCyan ctermfg=DarkCyan
+
+function ClangFormat()
+    let p = getcurpos()
+    :%!clang-format
+    call setpos('.', p)
+endfunction
+
+command ClangFormat call ClangFormat()
+
+autocmd FileType javascript syntax keyword Statement await 
 
