@@ -230,5 +230,5 @@ endfunction
 
 command ClangFormat call ClangFormat()
 
-autocmd FileType javascript syntax keyword Statement await 
+autocmd FileType javascript syntax keyword Statement await async from
 
