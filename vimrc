@@ -112,6 +112,12 @@ if g:deoplete#enable_at_startup
     autocmd FileType Select call deoplete#custom#buffer_option('auto_complete', v:false)
 endif
 
+Plug 'ramunas/vim-macos-abbreviations'
+
+
+Plug 'https://manu@framagit.org/manu/coq-au-vim.git'
+Plug 'jvoorhis/coq.vim'
+
 call plug#end()
 
 
