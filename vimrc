@@ -99,6 +99,10 @@ augroup LSP
 augroup END
 
 
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
+
 Plug 'ramunas/vim-select'
 nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>f :call Files()<cr>
@@ -230,5 +234,5 @@ endfunction
 
 command ClangFormat call ClangFormat()
 
-autocmd FileType javascript syntax keyword Statement await async from
+" autocmd FileType javascript syntax keyword Statement await async from
 
