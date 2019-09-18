@@ -242,3 +242,29 @@ command ClangFormat call ClangFormat()
 
 " autocmd FileType javascript syntax keyword Statement await async from
 
+function DeleteBuffer()
+    python3 << EOF
+import vim
+buf = vim.current.window.buffer
+win = vim.current.window
+if len(vim.buffers) == 1:
+    vim.command("enew")
+
+nextbuffer = None
+for b in vim.buffers:
+    if b.number != buf.number:
+        nextbuffer = b
+        break
+
+for w in vim.windows:
+    if w.buffer.number == buf.number:
+        vim.current.window = w
+        vim.command("buffer %d" % nextbuffer.number)
+vim.current.window = win
+
+vim.command("bwipeout %d" % buf.number)
+EOF
+endfunction
+
+command Bdelete call DeleteBuffer()
+
