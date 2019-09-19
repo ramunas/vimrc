@@ -120,6 +120,8 @@ Plug 'jvoorhis/coq.vim'
 
 call plug#end()
 
+" Load man page plugin
+runtime ftplugin/man.vim
 
 
 " True-color support
@@ -267,4 +269,3 @@ EOF
 endfunction
 
 command Bdelete call DeleteBuffer()
-
