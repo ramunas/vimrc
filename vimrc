@@ -16,7 +16,11 @@ endif
 
 call plug#begin()
 
+" Plug 'flazz/vim-colorschemes'
+" Plug 'rafi/awesome-vim-colorschemes'
+Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
+
 Plug 'tomtom/tcomment_vim'
 " tcomment
 map <leader>cc gcc
@@ -25,7 +29,6 @@ Plug 'vim-scripts/Align'
 Plug 'scrooloose/nerdtree'
 map <leader>t :NERDTree<cr>
 
-Plug 'flazz/vim-colorschemes'
 
 Plug 'bling/vim-airline'
 
@@ -123,6 +126,12 @@ call plug#end()
 " Load man page plugin
 runtime ftplugin/man.vim
 
+let g:solarized_termcolors=256
+set background=dark
+let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_vert_split='blue'
+colorscheme gruvbox
+
 
 " True-color support
 " set termguicolors
@@ -207,9 +216,6 @@ map <c-k> <c-w>+
 map <c-h> <c-w><
 map <c-l> <c-w>>
 
-let g:solarized_termcolors=256
-set background=light
-colorscheme solarized
 
 
 " Make <esc> behave in terminal window like in an ordinary window.
