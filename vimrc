@@ -19,6 +19,8 @@ call plug#begin()
 " Plug 'flazz/vim-colorschemes'
 " Plug 'rafi/awesome-vim-colorschemes'
 Plug 'morhetz/gruvbox'
+Plug 'junegunn/seoul256.vim'
+
 Plug 'altercation/vim-colors-solarized'
 
 Plug 'tomtom/tcomment_vim'
@@ -130,7 +132,12 @@ let g:solarized_termcolors=256
 set background=dark
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_vert_split='blue'
+" Colors for XTerm: https://github.com/morhetz/gruvbox-contrib/blob/master/xresources/gruvbox-dark.xresources
 colorscheme gruvbox
+
+" set background=light
+let g:seoul256_background = 239
+" colorscheme seoul256-light
 
 
 " True-color support
