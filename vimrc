@@ -128,7 +128,10 @@ call plug#end()
 " Load man page plugin
 runtime ftplugin/man.vim
 
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
+" set background=light
+" colorscheme solarized
+
 set background=dark
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_vert_split='blue'
@@ -136,7 +139,7 @@ let g:gruvbox_vert_split='blue'
 colorscheme gruvbox
 
 " set background=light
-let g:seoul256_background = 239
+" let g:seoul256_background = 239
 " colorscheme seoul256-light
 
 
@@ -282,3 +285,5 @@ EOF
 endfunction
 
 command Bdelete call DeleteBuffer()
+
+command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
