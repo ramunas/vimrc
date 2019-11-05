@@ -274,13 +274,16 @@ for b in vim.buffers:
         nextbuffer = b
         break
 
-for w in vim.windows:
-    if w.buffer.number == buf.number:
-        vim.current.window = w
-        vim.command("buffer %d" % nextbuffer.number)
-vim.current.window = win
+if nextbuffer == None:
+    vim.command("bdelete")
+else:
+    for w in vim.windows:
+        if w.buffer.number == buf.number:
+            vim.current.window = w
+            vim.command("buffer %d" % nextbuffer.number)
+    vim.current.window = win
 
-vim.command("bwipeout %d" % buf.number)
+    vim.command("bwipeout %d" % buf.number)
 EOF
 endfunction
 
