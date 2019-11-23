@@ -111,6 +111,7 @@ Plug 'mxw/vim-jsx'
 Plug 'ramunas/vim-select'
 nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>f :call Files()<cr>
+nnoremap <leader>s :call LanguageClientSymbolList()<cr>
 " Disable deoplete for the Select buffers
 " if g:loaded_deoplete
 if g:deoplete#enable_at_startup
