@@ -256,8 +256,14 @@ function ClangFormat()
     :%!clang-format
     call setpos('.', p)
 endfunction
-
 command ClangFormat call ClangFormat()
+
+function JavascriptPretty()
+    let p = getcurpos()
+    :%!prettier --stdin --parser=babel --tab-width=4
+    call setpos('.', p)
+endfunction
+command JsPretty call JavascriptPretty()
 
 " autocmd FileType javascript syntax keyword Statement await async from
 
