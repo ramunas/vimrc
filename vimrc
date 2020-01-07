@@ -49,21 +49,22 @@ let g:airline_symbols.linenr = ''
 
 Plug 'tpope/vim-fugitive'
 
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
-Plug 'zchee/deoplete-jedi'
-Plug 'carlitux/deoplete-ternjs'
-Plug 'Shougo/neco-vim'  " deoplete completion for VimL commands
-Plug 'Shougo/neco-syntax'  " deoplete completion for VimL syntax
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+let g:deoplete#enable_at_startup = 0
+"
+" Plug 'zchee/deoplete-jedi'
+" Plug 'carlitux/deoplete-ternjs'
+" Plug 'Shougo/neco-vim'  " deoplete completion for VimL commands
+" Plug 'Shougo/neco-syntax'  " deoplete completion for VimL syntax
 
 Plug 'luochen1990/rainbow'
 
@@ -111,14 +112,16 @@ Plug 'mxw/vim-jsx'
 Plug 'ramunas/vim-select'
 nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>f :call Files()<cr>
-nnoremap <leader>s :call LanguageClientSymbolList()<cr>
+nnoremap <leader>v :call LanguageClientSymbolList()<cr>
 " Disable deoplete for the Select buffers
 " if g:loaded_deoplete
 if g:deoplete#enable_at_startup
     autocmd FileType Select call deoplete#custom#buffer_option('auto_complete', v:false)
 endif
 
-Plug 'ramunas/vim-macos-abbreviations'
+autocmd FileType Select let b:coc_suggest_disable = 1
+
+" Plug 'ramunas/vim-macos-abbreviations'
 
 
 Plug 'https://manu@framagit.org/manu/coq-au-vim.git'
