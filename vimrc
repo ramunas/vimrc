@@ -51,6 +51,11 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+autocmd FileType cpp,c map <buffer> <c-]> <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 
 " if has('nvim')
 "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -69,40 +74,40 @@ let g:deoplete#enable_at_startup = 0
 Plug 'luochen1990/rainbow'
 
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd'],
-  \ }
-let g:LanguageClient_diagnosticsEnable = v:false
-
-function SetLSPShortcuts()
-  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-  nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-  nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-  nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-endfunction()
-
-augroup LSP
-  autocmd!
-  autocmd FileType cpp,c call SetLSPShortcuts()
-  autocmd FileType cpp,c map <buffer> <c-]> :call LanguageClient#textDocument_definition()<CR>
-  autocmd FileType cpp,c map <buffer> gf :call LanguageClient#textDocument_definition()<CR>
-  " LanguageClient#textDocument_typeDefinition()
-  " LanguageClient#textDocument_implementation()
-  " LanguageClient#textDocument_rename(name) - renames identifier under cursor
-  "
-  " LanguageClient_textDocument_documentSymbol() - lists symbols, use with
-  " select
-augroup END
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+" let g:LanguageClient_serverCommands = {
+"   \ 'cpp': ['clangd'],
+"   \ }
+" let g:LanguageClient_diagnosticsEnable = v:false
+"
+" function SetLSPShortcuts()
+"   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+"   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+"   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+"   nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+"   nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+"   nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+"   nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+"   nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+"   nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+"   nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+" endfunction()
+"
+" augroup LSP
+"   autocmd!
+"   autocmd FileType cpp,c call SetLSPShortcuts()
+"   autocmd FileType cpp,c map <buffer> <c-]> :call LanguageClient#textDocument_definition()<CR>
+"   autocmd FileType cpp,c map <buffer> gf :call LanguageClient#textDocument_definition()<CR>
+"   " LanguageClient#textDocument_typeDefinition()
+"   " LanguageClient#textDocument_implementation()
+"   " LanguageClient#textDocument_rename(name) - renames identifier under cursor
+"   "
+"   " LanguageClient_textDocument_documentSymbol() - lists symbols, use with
+"   " select
+" augroup END
 
 
 Plug 'pangloss/vim-javascript'
@@ -179,6 +184,8 @@ set showcmd		" display incomplete commands
 set laststatus=2
 set cinoptions=g0,(0,l1,J
 set timeout timeoutlen=1000
+
+set signcolumn=no
 
 
 " turn on the modeline detection in files
