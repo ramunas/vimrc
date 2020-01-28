@@ -50,6 +50,10 @@ let g:airline_symbols.linenr = ''
 Plug 'tpope/vim-fugitive'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver'
+Plug 'neoclide/coc-html'
+" Plug 'neoclide/coc-python'
+Plug 'iamcco/coc-vimlsp'
 
 autocmd FileType cpp,c map <buffer> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
