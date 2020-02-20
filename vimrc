@@ -311,3 +311,5 @@ endfunction
 command Bdelete call DeleteBuffer()
 
 command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
+
+autocmd FileType cpp setlocal matchpairs+=<:>
