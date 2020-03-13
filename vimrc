@@ -16,8 +16,6 @@ endif
 
 call plug#begin()
 
-" Plug 'flazz/vim-colorschemes'
-" Plug 'rafi/awesome-vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
 
@@ -50,10 +48,10 @@ let g:airline_symbols.linenr = ''
 Plug 'tpope/vim-fugitive'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver'
-Plug 'neoclide/coc-html'
-" Plug 'neoclide/coc-python'
-Plug 'iamcco/coc-vimlsp'
+" Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
 
 autocmd FileType cpp,c map <buffer> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -312,4 +310,4 @@ command Bdelete call DeleteBuffer()
 
 command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
 
-autocmd FileType cpp setlocal matchpairs+=<:>
+autocmd FileType cpp,xml setlocal matchpairs+=<:>
