@@ -53,7 +53,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
 
-autocmd FileType cpp,c map <buffer> <c-]> <Plug>(coc-definition)
+autocmd FileType cpp,c,python map <buffer> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -143,10 +143,10 @@ runtime ftplugin/man.vim
 " set background=light
 " colorscheme solarized
 
-set background=dark
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_vert_split='blue'
 " Colors for XTerm: https://github.com/morhetz/gruvbox-contrib/blob/master/xresources/gruvbox-dark.xresources
+set background=dark
 colorscheme gruvbox
 
 " set background=light
@@ -311,3 +311,8 @@ command Bdelete call DeleteBuffer()
 command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
 
 autocmd FileType cpp,xml setlocal matchpairs+=<:>
+
+
+let &t_SI ="\e[5 q" "SI = INSERT mode
+let &t_SR ="\e[4 q" "SR = REPLACE mode
+let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
