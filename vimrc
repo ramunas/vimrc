@@ -186,8 +186,8 @@ set showcmd		" display incomplete commands
 set laststatus=2
 set cinoptions=g0,(0,l1,J
 set timeout timeoutlen=1000
-
 set signcolumn=no
+set timeoutlen=500
 
 
 " turn on the modeline detection in files
@@ -311,3 +311,10 @@ command Bdelete call DeleteBuffer()
 command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
 
 autocmd FileType cpp,xml setlocal matchpairs+=<:>
+autocmd FileType cmake setlocal sts=2 | setlocal sw=2
+
+" optional reset cursor on start:
+" if &term =~ "xterm"
+"     let &t_SI = "\e[6 q"
+"     let &t_EI = "\e[2 q"
+" endif
