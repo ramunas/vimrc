@@ -65,9 +65,9 @@ nnoremap <leader>f :call Files()<cr>
 nnoremap <leader>v :call LanguageClientSymbolList()<cr>
 " Disable deoplete for the Select buffers
 " if g:loaded_deoplete
-if g:deoplete#enable_at_startup
-    autocmd FileType Select call deoplete#custom#buffer_option('auto_complete', v:false)
-endif
+" if g:deoplete#enable_at_startup
+"     autocmd FileType Select call deoplete#custom#buffer_option('auto_complete', v:false)
+" endif
 
 autocmd FileType Select let b:coc_suggest_disable = 1
 
