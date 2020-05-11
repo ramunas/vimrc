@@ -48,68 +48,11 @@ let g:airline_symbols.linenr = ''
 Plug 'tpope/vim-fugitive'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
 
 autocmd FileType cpp,c,python map <buffer> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-let g:deoplete#enable_at_startup = 0
-"
-" Plug 'zchee/deoplete-jedi'
-" Plug 'carlitux/deoplete-ternjs'
-" Plug 'Shougo/neco-vim'  " deoplete completion for VimL commands
-" Plug 'Shougo/neco-syntax'  " deoplete completion for VimL syntax
-
-Plug 'luochen1990/rainbow'
-
-
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-" let g:LanguageClient_serverCommands = {
-"   \ 'cpp': ['clangd'],
-"   \ }
-" let g:LanguageClient_diagnosticsEnable = v:false
-"
-" function SetLSPShortcuts()
-"   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-"   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-"   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-"   nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-"   nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-"   nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-"   nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-"   nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-"   nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-"   nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-" endfunction()
-"
-" augroup LSP
-"   autocmd!
-"   autocmd FileType cpp,c call SetLSPShortcuts()
-"   autocmd FileType cpp,c map <buffer> <c-]> :call LanguageClient#textDocument_definition()<CR>
-"   autocmd FileType cpp,c map <buffer> gf :call LanguageClient#textDocument_definition()<CR>
-"   " LanguageClient#textDocument_typeDefinition()
-"   " LanguageClient#textDocument_implementation()
-"   " LanguageClient#textDocument_rename(name) - renames identifier under cursor
-"   "
-"   " LanguageClient_textDocument_documentSymbol() - lists symbols, use with
-"   " select
-" augroup END
 
 
 Plug 'pangloss/vim-javascript'
@@ -238,7 +181,6 @@ map <c-j> <c-w>-
 map <c-k> <c-w>+
 map <c-h> <c-w><
 map <c-l> <c-w>>
-
 
 
 " Make <esc> behave in terminal window like in an ordinary window.
