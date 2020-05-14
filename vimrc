@@ -264,3 +264,25 @@ if &term =~ "xterm"
     let &t_SR ="\e[4 q" "SR = REPLACE mode
     let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
 endif
+
+
+function LoadAbbreviations()
+    set iskeyword+=\
+    set iskeyword+=_
+    set iskeyword+=-
+    python3 << EOF
+import vim
+import os
+import os.path
+shortcuts = os.environ['HOME'] + '/shortcuts'
+
+if os.path.isfile(shortcuts):
+    with open(shortcuts, 'r') as f:
+        scs = [x.strip().split(' ') for x in f]
+        for s in scs:
+            vim.command('iabbrev %s %s' % (s[0],s[1]))
+EOF
+endfunction
+
+call LoadAbbreviations()
+
