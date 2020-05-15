@@ -277,7 +277,7 @@ import os.path
 shortcuts = os.environ['HOME'] + '/shortcuts'
 
 if os.path.isfile(shortcuts):
-    with open(shortcuts, 'r') as f:
+    with open(shortcuts, 'r', encoding="utf-8") as f:
         scs = [x.strip().split(' ') for x in f]
         for s in scs:
             vim.command('iabbrev %s %s' % (s[0],s[1]))
