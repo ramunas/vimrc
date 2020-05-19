@@ -256,7 +256,7 @@ autocmd FileType cpp,xml setlocal matchpairs+=<:>
 autocmd FileType cmake setlocal sts=2 | setlocal sw=2
 
 " optional reset cursor on start:
-if &term =~ "xterm"
+if &term =~ "xterm" && ! getenv('HOST') =~ 'eseln'
     " let &t_SI = "\e[6 q"
     " let &t_EI = "\e[2 q"
 
