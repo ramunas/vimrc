@@ -18,8 +18,9 @@ call plug#begin()
 
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
-
 Plug 'altercation/vim-colors-solarized'
+Plug 'ayu-theme/ayu-vim'
+Plug 'rakr/vim-one'
 
 Plug 'tomtom/tcomment_vim'
 " tcomment
@@ -71,11 +72,10 @@ nnoremap <leader>v :call LanguageClientSymbolList()<cr>
 
 autocmd FileType Select let b:coc_suggest_disable = 1
 
-" Plug 'ramunas/vim-macos-abbreviations'
-
-
 Plug 'https://manu@framagit.org/manu/coq-au-vim.git'
 Plug 'jvoorhis/coq.vim'
+
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -92,13 +92,9 @@ let g:gruvbox_vert_split='blue'
 set background=dark
 colorscheme gruvbox
 
-" set background=light
-" let g:seoul256_background = 239
-" colorscheme seoul256-light
-
-
-" True-color support
-" set termguicolors
+" set background=dark        " for the light version
+" " let g:one_allow_italics = 1 " I love italic for comments
+" colorscheme one
 
 syntax enable
 filetype on
