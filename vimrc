@@ -19,6 +19,7 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'sonph/onehalf', {'rtp' : 'vim' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'rakr/vim-one'
 
@@ -89,12 +90,13 @@ runtime ftplugin/man.vim
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_vert_split='blue'
 " Colors for XTerm: https://github.com/morhetz/gruvbox-contrib/blob/master/xresources/gruvbox-dark.xresources
-set background=dark
-colorscheme gruvbox
+" set background=dark
+" colorscheme gruvbox
 
-" set background=dark        " for the light version
-" " let g:one_allow_italics = 1 " I love italic for comments
-" colorscheme one
+set background=light
+colorscheme onehalflight
+
+
 
 syntax enable
 filetype on
@@ -252,14 +254,14 @@ autocmd FileType cpp,xml setlocal matchpairs+=<:>
 autocmd FileType cmake setlocal sts=2 | setlocal sw=2
 
 " optional reset cursor on start:
-if &term =~ "xterm" && ! getenv('HOST') =~ 'eseln'
+" if &term =~ "xterm" && ! getenv('HOST') =~ 'eseln'
     " let &t_SI = "\e[6 q"
     " let &t_EI = "\e[2 q"
 
     let &t_SI ="\e[5 q" "SI = INSERT mode
     let &t_SR ="\e[4 q" "SR = REPLACE mode
     let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
-endif
+" endif
 
 
 function LoadAbbreviations()
