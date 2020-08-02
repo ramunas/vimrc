@@ -64,6 +64,9 @@
 \( ⦅
 \) ⦆
 \vdash ⊢
+\|- ⊢
+\vDash ⊨
+\|= ⊨
 \x ×
 \times ×
 _0 ₀
@@ -126,3 +129,17 @@ _\chi ᵪ
 \cdots ⋯
 \bot ⊥
 \bottom ⊥
+\qed ∎
+\cup ∪
+\cap ∩
+\:= ≔
+\vdots ⋮
+\oplus ⊕
+\ominus ⊖
+\otimes ⊗
+\odiv ⊘
+\sqplus ⊞
+\sqtimes ⊠
+\sqminus ⊟
+\::= ⩴
+\; ⨟

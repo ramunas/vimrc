@@ -282,4 +282,5 @@ EOF
 endfunction
 
 call LoadAbbreviations()
+command UpdateAbbreviations call LoadAbbreviations()
 
