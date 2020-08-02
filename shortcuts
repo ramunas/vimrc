@@ -64,9 +64,7 @@
 \( ⦅
 \) ⦆
 \vdash ⊢
-\|- ⊢
 \vDash ⊨
-\|= ⊨
 \x ×
 \times ×
 _0 ₀
@@ -143,3 +141,5 @@ _\chi ᵪ
 \sqminus ⊟
 \::= ⩴
 \; ⨟
+\righttriangle ⊳
+\lefttriangle ⊲
