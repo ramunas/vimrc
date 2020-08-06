@@ -130,7 +130,7 @@ _\chi ᵪ
 \qed ∎
 \cup ∪
 \cap ∩
-\:= ≔
+\assign ≔
 \vdots ⋮
 \oplus ⊕
 \ominus ⊖
@@ -139,7 +139,7 @@ _\chi ᵪ
 \sqplus ⊞
 \sqtimes ⊠
 \sqminus ⊟
-\::= ⩴
+\defgram ⩴
 \; ⨟
 \righttriangle ⊳
 \lefttriangle ⊲

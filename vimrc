@@ -268,10 +268,10 @@ function LoadAbbreviations()
     set iskeyword+=\
     set iskeyword+=_
     set iskeyword+=-
-    set iskeyword+=>
-    set iskeyword+=<
-    set iskeyword+==
-    set iskeyword+=:
+    " set iskeyword+=>
+    " set iskeyword+=<
+    " set iskeyword+==
+    " set iskeyword+=:
     python3 << EOF
 import vim
 import os
