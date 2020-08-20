@@ -180,6 +180,10 @@ map <c-k> <c-w>+
 map <c-h> <c-w><
 map <c-l> <c-w>>
 
+map <c-t>h :tabprevious<cr>
+map <c-t>l :tabnext<cr>
+map <c-t><c-t> :tabnext<cr>
+
 
 " Make <esc> behave in terminal window like in an ordinary window.
 if has('nvim')
