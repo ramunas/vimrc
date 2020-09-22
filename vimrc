@@ -255,7 +255,10 @@ endfunction
 function ShowInfo(x)
     new
     execute ':%!info ' . a:x
-    syntax match Type |^\* .*:|
+    syntax match Identifier |^\* .*:|
+    syntax match Identifier |^\d.*$|
+    syntax match Identifier |^=\+$|
+    syntax match Identifier |^*\+$|
     setlocal nobuflisted nomodified buftype=nofile bufhidden=wipe readonly
 endfunction
 command -nargs=1 Info :call ShowInfo('<args>')
