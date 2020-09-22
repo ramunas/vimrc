@@ -252,6 +252,14 @@ else:
 EOF
 endfunction
 
+function ShowInfo(x)
+    new
+    execute ':%!info ' . a:x
+    syntax match Type |^\* .*:|
+    setlocal nobuflisted nomodified buftype=nofile bufhidden=wipe readonly
+endfunction
+command -nargs=1 Info :call ShowInfo('<args>')
+
 command Bdelete call DeleteBuffer()
 
 command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
@@ -273,7 +281,7 @@ autocmd FileType cmake setlocal sts=2 | setlocal sw=2
 function LoadAbbreviations()
     set iskeyword+=\
     set iskeyword+=_
-    set iskeyword+=-
+    " set iskeyword+=-
     " set iskeyword+=>
     " set iskeyword+=<
     " set iskeyword+==
