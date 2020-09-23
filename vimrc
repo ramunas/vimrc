@@ -260,6 +260,7 @@ function ShowInfo(x)
     syntax match Identifier |^=\+$|
     syntax match Identifier |^*\+$|
     setlocal nobuflisted nomodified buftype=nofile bufhidden=wipe readonly
+    map q :q<cr>
 endfunction
 command -nargs=1 Info :call ShowInfo('<args>')
 
