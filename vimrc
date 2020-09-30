@@ -16,12 +16,12 @@ endif
 
 call plug#begin()
 
-Plug 'morhetz/gruvbox'
-Plug 'junegunn/seoul256.vim'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'morhetz/gruvbox'
+" Plug 'junegunn/seoul256.vim'
+" Plug 'altercation/vim-colors-solarized'
 Plug 'sonph/onehalf', {'rtp' : 'vim' }
-Plug 'ayu-theme/ayu-vim'
-Plug 'rakr/vim-one'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'rakr/vim-one'
 
 Plug 'tomtom/tcomment_vim'
 " tcomment
@@ -50,7 +50,6 @@ let g:airline_symbols.linenr = ''
 Plug 'tpope/vim-fugitive'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 autocmd FileType cpp,c,python map <buffer> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -60,23 +59,15 @@ nmap <silent> gr <Plug>(coc-references)
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
-
 Plug 'ramunas/vim-select'
 nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>f :call Files()<cr>
 nnoremap <leader>v :call LanguageClientSymbolList()<cr>
-" Disable deoplete for the Select buffers
-" if g:loaded_deoplete
-" if g:deoplete#enable_at_startup
-"     autocmd FileType Select call deoplete#custom#buffer_option('auto_complete', v:false)
-" endif
-
 autocmd FileType Select let b:coc_suggest_disable = 1
 
-Plug 'https://manu@framagit.org/manu/coq-au-vim.git'
-Plug 'jvoorhis/coq.vim'
-
-Plug 'rust-lang/rust.vim'
+" Plug 'https://manu@framagit.org/manu/coq-au-vim.git'
+" Plug 'jvoorhis/coq.vim'
+" Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -87,15 +78,14 @@ runtime ftplugin/man.vim
 " set background=light
 " colorscheme solarized
 
-let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_vert_split='blue'
+" let g:gruvbox_contrast_dark='soft'
+" let g:gruvbox_vert_split='blue'
 " Colors for XTerm: https://github.com/morhetz/gruvbox-contrib/blob/master/xresources/gruvbox-dark.xresources
 " set background=dark
 " colorscheme gruvbox
 
 set background=light
 colorscheme onehalflight
-
 
 
 syntax enable
@@ -130,19 +120,14 @@ set timeout timeoutlen=1000
 set signcolumn=no
 set timeoutlen=500
 
-
 " turn on the modeline detection in files
 set modeline
 set modelines=10
 set splitright
 set nobackup
 
-
 " live preview of the substitution command
-if has('nvim')
-    set inccommand=nosplit
-endif
-
+if has('nvim') | set inccommand=nosplit | endif
 
 let perl_want_scope_in_variables = 1
 let perl_extended_vars = 1
@@ -152,10 +137,8 @@ let python_highlight_all = 1
 " where to search for `tags' file
 set tags=./tags,./../tags
 
-
 map <leader>n :nohlsearch<cr>
 map <leader>m <leader>n
-
 
 " Some basic mappings
 map Y y$
@@ -173,7 +156,6 @@ cnoremap <c-e> <end>
 cnoremap <c-f> <right>
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
-
 
 map <c-j> <c-w>-
 map <c-k> <c-w>+
@@ -201,7 +183,6 @@ autocmd BufNewFile,BufRead *.ML setf sml
 autocmd FileType qf map <buffer> q :bd<cr>
 autocmd FileType help map <buffer> q :bd<cr>
 autocmd BufNewFile,BufRead *.tex set ft=tex
-
 
 command ClearTrailingWhitespace normal mx<cr>:keepjumps keeppatterns %s/\s\+$//g<cr>`x
 command! VimRC :e $MYVIMRC
