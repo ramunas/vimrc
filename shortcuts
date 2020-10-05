@@ -32,6 +32,7 @@
 \phi 𝜙
 \rhos 𝜚
 \Gamma 𝛤
+\G 𝛤
 \Delta 𝛥
 \Theta 𝛩
 \Lambda 𝛬
@@ -141,6 +142,7 @@ _\chi ᵪ
 \oplus ⊕
 \ominus ⊖
 \otimes ⊗
+\ox ⊗
 \odiv ⊘
 \sqplus ⊞
 \sqtimes ⊠

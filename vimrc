@@ -30,6 +30,7 @@ map <leader>cc gcc
 Plug 'vim-scripts/Align'
 Plug 'scrooloose/nerdtree'
 map <leader>t :NERDTree<cr>
+let g:NERDTreeHijackNetrw=0
 
 
 Plug 'bling/vim-airline'
