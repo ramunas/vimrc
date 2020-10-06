@@ -253,15 +253,11 @@ command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
 autocmd FileType cpp,xml setlocal matchpairs+=<:>
 autocmd FileType cmake setlocal sts=2 | setlocal sw=2
 
-" optional reset cursor on start:
-" if &term =~ "xterm" && ! getenv('HOST') =~ 'eseln'
-    " let &t_SI = "\e[6 q"
-    " let &t_EI = "\e[2 q"
-
+if getenv('TERM_PROGRAM') =~ 'Apple_Terminal'
     let &t_SI ="\e[5 q" "SI = INSERT mode
     let &t_SR ="\e[4 q" "SR = REPLACE mode
     let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
-" endif
+endif
 
 
 function LoadAbbreviations()
