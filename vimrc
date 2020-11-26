@@ -1,5 +1,9 @@
 let mapleader = ","
 
+" solves the problem of ouputing these raw in gnome-terminal
+let &t_TI = ""
+let &t_TE = ""
+
 if !has("nvim") | set nocompatible | endif
 
 
