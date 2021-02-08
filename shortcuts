@@ -61,7 +61,9 @@
 \[ ⟦
 \] ⟧
 \< ⟨
+\langle ⟨
 \> ⟩
+\rangle ⟩
 \( ⦅
 \) ⦆
 \vdash ⊢
@@ -113,6 +115,7 @@ _\phi ᵩ
 _\chi ᵪ
 \neg ¬
 \and ∧
+\land ∧
 \or ∨
 \exists ∃
 \forall ∀
@@ -129,6 +132,7 @@ _\chi ᵪ
 \--> ⟶
 \longrightarrow ⟶
 \lra ⟶
+\iff ↔︎
 \... …
 \dots …
 \cdots ⋯
@@ -151,3 +155,4 @@ _\chi ᵪ
 \; ⨟
 \righttriangle ⊳
 \lefttriangle ⊲
+\frg 𝔤

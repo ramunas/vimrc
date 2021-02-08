@@ -6,6 +6,10 @@ let &t_TE = ""
 
 if !has("nvim") | set nocompatible | endif
 
+if hostname() =~ "RamunassMacBook"
+    set shell=/usr/local/bin/bash
+endif
+
 
 " install Plug if not instaled
 let s:plug_path = '~/.vim/autoload/plug.vim'
@@ -262,7 +266,6 @@ if getenv('TERM_PROGRAM') =~ 'Apple_Terminal'
     let &t_SR ="\e[4 q" "SR = REPLACE mode
     let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
 endif
-
 
 function LoadAbbreviations()
     set iskeyword+=\
