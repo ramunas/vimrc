@@ -291,3 +291,5 @@ endfunction
 call LoadAbbreviations()
 command UpdateAbbreviations call LoadAbbreviations()
 
+map <leader>s :execute 'edit ' . CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})<cr>
+
