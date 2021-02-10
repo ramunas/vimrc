@@ -291,7 +291,7 @@ endfunction
 call LoadAbbreviations()
 command UpdateAbbreviations call LoadAbbreviations()
 
-map <leader>s :execute 'edit ' . CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})<cr>
+map <leader>x :execute 'edit ' . CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})<cr>
 
 " fix the dark background of comments
 highlight Comment cterm=NONE
@@ -314,6 +314,7 @@ function s:install_my_coc_packages()
     CocInstall coc-texlab
     CocInstall coc-json
     CocInstall coc-tsserver
+    CocInstall coc-cmake
 endfunction
 
 command InstallMyCoc call s:install_my_coc_packages()
