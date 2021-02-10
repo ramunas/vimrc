@@ -293,3 +293,37 @@ command UpdateAbbreviations call LoadAbbreviations()
 
 map <leader>s :execute 'edit ' . CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})<cr>
 
+" fix the dark background of comments
+highlight Comment cterm=NONE
+
+" let my_coc_packages = {}
+" if filereadable($HOME . "/.config/coc/extensions/package.json")
+"     let s:coc_packages_content = system("cat " . $HOME . "/.config/coc/extensions/package.json")
+"     let s:coc_packages_deps = json_decode(s:coc_packages_content)
+"     if has_key(s:coc_packages_deps, 'dependencies')
+"         let my_coc_packages = s:coc_packages_deps['dependencies']
+"     endif
+" endif
+
+" autocmd VimEnter CocInstall coc-sh
+
+function s:install_my_coc_packages()
+    CocInstall coc-sh
+    CocInstall coc-clangd
+    CocInstall coc-python
+    CocInstall coc-texlab
+    CocInstall coc-json
+    CocInstall coc-tsserver
+endfunction
+
+command InstallMyCoc call s:install_my_coc_packages()
+
+" echo my_coc_packages
+
+" if !has_key(my_coc_packages, 'coc-sh')
+"     " execute "CocInstall coc-sh"
+"     echo "No coc-sh"
+"     call coc#util#install_extension(["coc-sh"])
+"     " CocInstall coc-sh
+" endif
+
