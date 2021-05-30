@@ -33,7 +33,8 @@ call plug#begin()
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'rakr/vim-one'
 " Plug 'nightsense/carbonized'
-Plug 'rakr/vim-two-firewatch'
+" Plug 'rakr/vim-two-firewatch'
+" Plug 'ayu-theme/ayu-vim'
 
 Plug 'tomtom/tcomment_vim'
 " tcomment
@@ -104,7 +105,13 @@ runtime ftplugin/man.vim
 " set background=light
 " colorscheme carbonized-light
 
-colorscheme two-firewatch
+" colorscheme two-firewatch
+
+" set termguicolors     " enable true colors support
+" let ayucolor="light"  " for light version of theme
+" let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="dark"   " for dark version of theme
+" colorscheme ayu
 
 
 syntax enable
