@@ -26,10 +26,10 @@ call plug#begin()
 
 " colorschemes
 "
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 " Plug 'junegunn/seoul256.vim'
 " Plug 'altercation/vim-colors-solarized'
-" Plug 'sonph/onehalf', {'rtp' : 'vim' }
+Plug 'sonph/onehalf', {'rtp' : 'vim' }
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'rakr/vim-one'
 " Plug 'nightsense/carbonized'
@@ -99,8 +99,8 @@ runtime ftplugin/man.vim
 " set background=light
 " colorscheme gruvbox
 
-" set background=light
-" colorscheme onehalflight
+set background=light
+colorscheme onehalflight
 
 " set background=light
 " colorscheme carbonized-light
