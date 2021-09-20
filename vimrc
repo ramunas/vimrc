@@ -62,12 +62,15 @@ let g:airline_symbols.linenr = ''
 
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 autocmd FileType cpp,c,python map <buffer> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>s :CocList symbols<cr>
+command CocHover :call CocActionAsync('doHover')
 
 
 Plug 'pangloss/vim-javascript'
