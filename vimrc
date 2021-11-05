@@ -60,6 +60,10 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#fnamemod = ':t'
+
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
@@ -71,6 +75,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <leader>s :CocList symbols<cr>
 command CocHover :call CocActionAsync('doHover')
+command CocSwitchHeader :execute 'edit' CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})
+nnoremap <leader>h :CocSwitchHeader<cr>
 
 
 Plug 'pangloss/vim-javascript'
@@ -79,7 +85,7 @@ Plug 'mxw/vim-jsx'
 Plug 'ramunas/vim-select'
 nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>f :call Files()<cr>
-nnoremap <leader>v :call LanguageClientSymbolList()<cr>
+" nnoremap <leader>v :call LanguageClientSymbolList()<cr>
 autocmd FileType Select let b:coc_suggest_disable = 1
 
 " Plug 'https://manu@framagit.org/manu/coq-au-vim.git'
