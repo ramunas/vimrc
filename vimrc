@@ -85,7 +85,6 @@ Plug 'mxw/vim-jsx'
 Plug 'ramunas/vim-select'
 nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>f :call Files()<cr>
-" nnoremap <leader>v :call LanguageClientSymbolList()<cr>
 autocmd FileType Select let b:coc_suggest_disable = 1
 
 " Plug 'https://manu@framagit.org/manu/coq-au-vim.git'
@@ -296,11 +295,6 @@ endif
 function LoadAbbreviations()
     set iskeyword+=\
     set iskeyword+=_
-    " set iskeyword+=-
-    " set iskeyword+=>
-    " set iskeyword+=<
-    " set iskeyword+==
-    " set iskeyword+=:
     python3 << EOF
 import vim
 import os
@@ -317,21 +311,8 @@ endfunction
 call LoadAbbreviations()
 command UpdateAbbreviations call LoadAbbreviations()
 
-map <leader>x :execute 'edit ' . CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})<cr>
-
 " fix the dark background of comments
 highlight Comment cterm=NONE
-
-" let my_coc_packages = {}
-" if filereadable($HOME . "/.config/coc/extensions/package.json")
-"     let s:coc_packages_content = system("cat " . $HOME . "/.config/coc/extensions/package.json")
-"     let s:coc_packages_deps = json_decode(s:coc_packages_content)
-"     if has_key(s:coc_packages_deps, 'dependencies')
-"         let my_coc_packages = s:coc_packages_deps['dependencies']
-"     endif
-" endif
-
-" autocmd VimEnter CocInstall coc-sh
 
 function s:install_my_coc_packages()
     CocInstall coc-sh
@@ -345,12 +326,6 @@ endfunction
 
 command InstallMyCoc call s:install_my_coc_packages()
 
-" echo my_coc_packages
-
-" if !has_key(my_coc_packages, 'coc-sh')
-"     " execute "CocInstall coc-sh"
-"     echo "No coc-sh"
-"     call coc#util#install_extension(["coc-sh"])
-"     " CocInstall coc-sh
-" endif
+command UpgradeEverything :PlugUpgrade | :PlugUpdate | :CocUpdate
+command UpdateEverything :UpgradeEverything
 
