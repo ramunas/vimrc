@@ -85,6 +85,7 @@ Plug 'mxw/vim-jsx'
 Plug 'ramunas/vim-select'
 nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>f :call Files()<cr>
+nnoremap <leader>g :call GitFiles()<cr>
 autocmd FileType Select let b:coc_suggest_disable = 1
 
 " Plug 'https://manu@framagit.org/manu/coq-au-vim.git'
@@ -328,4 +329,13 @@ command InstallMyCoc call s:install_my_coc_packages()
 
 command UpgradeEverything :PlugUpgrade | :PlugUpdate | :CocUpdate
 command UpdateEverything :UpgradeEverything
+
+
+" When SIGUSR1 signal is received by vim, open ~/.vim/rfile. This is to open a
+" file from a terminal running within vim.
+" Put the following function in ~/.bashrc
+" vimedit () { echo $PWD/$1 > $HOME/.vim/rfile && kill -SIGUSR1 $PPID; }
+" then from terminal just do:
+" vimedit file
+autocmd! SigUSR1 * exec "split " . readfile(expand('~/.vim/rfile'))[0]
 
