@@ -353,6 +353,7 @@ endfunction
 function! SendToTerminalBuffer(lnum1, lnum2)
     let buf = GetVisibleTerminalBufNr()
     if buf < 0
+        echo "No terminal found"
         return
     endif
 
@@ -360,3 +361,5 @@ function! SendToTerminalBuffer(lnum1, lnum2)
 endfunction
 
 command! -range SendToTerm call SendToTerminalBuffer(<line1>, <line2>)
+map gt :SendToTerm<cr>
+
