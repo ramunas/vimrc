@@ -339,3 +339,24 @@ command UpdateEverything :UpgradeEverything
 " vimedit file
 autocmd! SigUSR1 * exec "split " . readfile(expand('~/.vim/rfile'))[0]
 
+
+function! GetVisibleTerminalBufNr()
+    for x in term_list()
+        let wid =  bufwinid(x)
+        if wid > 0
+            return x
+        endif
+    endfor
+    return -1
+endfunction
+
+function! SendToTerminalBuffer(lnum1, lnum2)
+    let buf = GetVisibleTerminalBufNr()
+    if buf < 0
+        return
+    endif
+
+    call term_sendkeys(buf, join(getline(a:lnum1, a:lnum2), "\<cr>") . "\n")
+endfunction
+
+command! -range SendToTerm call SendToTerminalBuffer(<line1>, <line2>)
