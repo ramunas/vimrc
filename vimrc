@@ -352,7 +352,15 @@ function! SendToTerminalBuffer(lnum1, lnum2)
         return
     endif
 
-    call term_sendkeys(buf, join(getline(a:lnum1, a:lnum2), "\<cr>") . "\n")
+    " stutter copying to a terminal. Otherwise, the terminal might be too slow
+    " at handling the characters, and some may be list and corrupted.
+    for l in getline(a:lnum1, a:lnum2)
+        sleep 1m
+        call term_sendkeys(buf, l . "\n")
+        redraw
+    endfor
+
+    " call term_sendkeys(buf, join(getline(a:lnum1, a:lnum2), "\n") . "\n")
 endfunction
 
 command! -range SendToTerm call SendToTerminalBuffer(<line1>, <line2>)
