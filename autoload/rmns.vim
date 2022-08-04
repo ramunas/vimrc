@@ -12,6 +12,12 @@ export def DeleteBuffer2()
         bufs = getbufinfo({'buflisted': 1})
     endif
 
+    # enew is not guaranteed to create a buffer. Then, there's nothing to be
+    # done.
+    if len(bufs) == 1
+        return
+    endif
+
     var nextBuf = bufnr("#")
     if nextBuf == currBuf
         nextBuf = -1
