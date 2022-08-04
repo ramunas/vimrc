@@ -199,11 +199,6 @@ map <c-t><c-t> :tabnext<cr>
 command TN :tabnew
 command Tn :tabnew
 
-" Make <esc> behave in terminal window like in an ordinary window.
-if has('nvim')
-    tnoremap <esc> <c-\><c-n>
-endif
-
 " Project specific settings
 " autocmd BufNewFile,BufRead
 "             \ /Users/ramunas/Dropbox/Projects/BroadastSessions/*.tex,/Users/ramunasgutkovas/Projects/BroadastSessions/*.tex
