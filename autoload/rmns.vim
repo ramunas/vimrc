@@ -31,3 +31,14 @@ export def DeleteBuffer2()
     execute "buffer" nextBuf
     execute "bdelete" currBuf
 enddef
+
+export def ShowGnuInfoDocPage(page: string)
+    new
+    execute ':%!info' page
+    syntax match Identifier |^\* .*:|
+    syntax match Identifier |^\d.*$|
+    syntax match Identifier |^=\+$|
+    syntax match Identifier |^*\+$|
+    setlocal nobuflisted nomodified buftype=nofile bufhidden=wipe readonly
+    map <buffer> q :q<cr>
+enddef

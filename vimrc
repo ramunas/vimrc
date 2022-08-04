@@ -267,18 +267,7 @@ command JsPretty call JavascriptPretty()
 
 command Bdelete call rmns#DeleteBuffer2()
 
-function ShowInfo(x)
-    new
-    execute ':%!info ' . a:x
-    syntax match Identifier |^\* .*:|
-    syntax match Identifier |^\d.*$|
-    syntax match Identifier |^=\+$|
-    syntax match Identifier |^*\+$|
-    setlocal nobuflisted nomodified buftype=nofile bufhidden=wipe readonly
-    map q :q<cr>
-endfunction
-command -nargs=1 Info :call ShowInfo('<args>')
-
+command -nargs=1 Info :call rmns#ShowGnuInfoDocPage('<args>')
 
 command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
 
