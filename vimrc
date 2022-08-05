@@ -291,36 +291,7 @@ command UpdateEverything :UpgradeEverything
 " vimedit file
 autocmd! SigUSR1 * exec "split " . readfile(expand('~/.vim/rfile'))[0]
 
-
-function! GetVisibleTerminalBufNr()
-    for x in term_list()
-        let wid =  bufwinid(x)
-        if wid > 0
-            return x
-        endif
-    endfor
-    return -1
-endfunction
-
-function! SendToTerminalBuffer(lnum1, lnum2)
-    let buf = GetVisibleTerminalBufNr()
-    if buf < 0
-        echo "No terminal found"
-        return
-    endif
-
-    " stutter copying to a terminal. Otherwise, the terminal might be too slow
-    " at handling the characters, and some may be list and corrupted.
-    for l in getline(a:lnum1, a:lnum2)
-        sleep 1m
-        call term_sendkeys(buf, l . "\n")
-        redraw
-    endfor
-
-    " call term_sendkeys(buf, join(getline(a:lnum1, a:lnum2), "\n") . "\n")
-endfunction
-
-command! -range SendToTerm call SendToTerminalBuffer(<line1>, <line2>)
+command! -range SendToTerm call rmns#SendBufLinesToTerminalBuffer(<line1>, <line2>)
 map gt :SendToTerm<cr>
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags

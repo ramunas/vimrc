@@ -38,6 +38,7 @@ export def DeleteBuffer2()
     execute "bdelete" currBuf
 enddef
 
+
 export def ShowGnuInfoDocPage(page: string)
     new
     execute ':%!info' page
@@ -47,4 +48,31 @@ export def ShowGnuInfoDocPage(page: string)
     syntax match Identifier |^*\+$|
     setlocal nobuflisted nomodified buftype=nofile bufhidden=wipe readonly
     map <buffer> q :q<cr>
+enddef
+
+
+def GetVisibleTerminalBufNr(): number
+    for x in term_list()
+        var wid = bufwinid(x)
+        if wid > 0
+            return x
+        endif
+    endfor
+    return -1
+enddef
+
+export def SendBufLinesToTerminalBuffer(lnum1: number, lnum2: number)
+    var buf = GetVisibleTerminalBufNr()
+    if buf < 0
+        echo "No terminal found"
+        return
+    endif
+
+    # stutter copying to a terminal. Otherwise, the terminal might be too slow
+    # at handling the characters, and some may be list and corrupted.
+    for l in getline(lnum1, lnum2)
+        sleep 1m
+        term_sendkeys(buf, l .. "\n")
+        redraw
+    endfor
 enddef
