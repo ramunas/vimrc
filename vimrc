@@ -4,21 +4,15 @@ let mapleader = ","
 let &t_TI = ""
 let &t_TE = ""
 
-if !has("nvim") | set nocompatible | endif
-
-if hostname() =~ "RamunassMacBook"
-    set shell=/usr/local/bin/bash
-endif
-
+set nocompatible
 
 " install Plug if not instaled
 let s:plug_path = '~/.vim/autoload/plug.vim'
-if has("nvim") | let s:plug_path = '~/.config/nvim/autoload/plug.vim' | endif
 let s:plug_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
 if empty(glob(s:plug_path))
-    execute "!curl -fLo " . s:plug_path . " --create-dirs " . s:plug_url
-  autocmd VimEnter * PlugInstall --sync
+    execute "!curl -fLo " s:plug_path "--create-dirs" s:plug_url
+    autocmd VimEnter * PlugInstall --sync
 endif
 
 
@@ -50,6 +44,7 @@ Plug 'bling/vim-airline'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+
 " powerline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -87,11 +82,8 @@ nnoremap <leader>f :call Files()<cr>
 nnoremap <leader>g :call GitFiles()<cr>
 autocmd FileType Select let b:coc_suggest_disable = 1
 
-" Plug 'https://manu@framagit.org/manu/coq-au-vim.git'
-" Plug 'jvoorhis/coq.vim'
-" Plug 'rust-lang/rust.vim'
-
 call plug#end()
+
 
 " Load man page plugin
 runtime ftplugin/man.vim
@@ -112,11 +104,6 @@ colorscheme gruvbox
 
 " set background=light
 " colorscheme carbonized-light
-
-" colorscheme two-firewatch
-
-" colorscheme zenburn
-
 
 syntax enable
 filetype on
@@ -156,14 +143,6 @@ set modelines=10
 set splitright
 set nobackup
 
-" live preview of the substitution command
-if has('nvim') | set inccommand=nosplit | endif
-
-let perl_want_scope_in_variables = 1
-let perl_extended_vars = 1
-let perl_string_as_statement = 1
-let python_highlight_all = 1
-
 " where to search for `tags' file
 set tags=./tags,./../tags
 
@@ -199,11 +178,6 @@ map <c-t><c-t> :tabnext<cr>
 command TN :tabnew
 command Tn :tabnew
 
-" Project specific settings
-" autocmd BufNewFile,BufRead
-"             \ /Users/ramunas/Dropbox/Projects/BroadastSessions/*.tex,/Users/ramunasgutkovas/Projects/BroadastSessions/*.tex
-"             \ set tabstop=4 shiftwidth=4 ft=tex spell spelllang=en_gb
-
 autocmd BufNewFile,BufRead *.ML setf sml
 autocmd FileType qf map <buffer> q :bd<cr>
 autocmd FileType help map <buffer> q :bd<cr>
@@ -212,8 +186,6 @@ autocmd BufNewFile,BufRead *.tex set ft=tex
 command ClearTrailingWhitespace normal mx<cr>:keepjumps keeppatterns %s/\s\+$//g<cr>`x
 command! VimRC :e $MYVIMRC
 command! HideGutter sign unplace *
-
-" highlight SignColumn ctermbg=DarkCyan ctermfg=DarkCyan
 
 function ClangFormat()
     let p = getcurpos()
@@ -261,9 +233,7 @@ command JsPretty call JavascriptPretty()
 " command Bdelete call DeleteBuffer()
 
 command Bdelete call rmns#DeleteBuffer2()
-
 command -nargs=1 Info :call rmns#ShowGnuInfoDocPage('<args>')
-
 command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
 
 autocmd FileType cpp,xml setlocal matchpairs+=<:>
