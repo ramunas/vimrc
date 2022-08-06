@@ -82,3 +82,14 @@ export def FilterBufferCommand(command: string)
     execute ":%!" command
     setpos('.', pos)
 enddef
+
+# TODO: port this to use completions?
+export def LoadAbbreviations()
+    set iskeyword+=\
+    set iskeyword+=_
+    for line in readfile($HOME .. "/shortcuts")
+        var pair = split(line, ' \+')
+        execute "iabbrev" pair[0] pair[1]
+    endfor
+enddef
+

@@ -235,24 +235,8 @@ if getenv('TERM_PROGRAM') =~ 'Apple_Terminal'
     let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
 endif
 
-function LoadAbbreviations()
-    set iskeyword+=\
-    set iskeyword+=_
-    python3 << EOF
-import vim
-import os
-import os.path
-shortcuts = os.environ['HOME'] + '/shortcuts'
-
-if os.path.isfile(shortcuts):
-    with open(shortcuts, 'r', encoding="utf-8") as f:
-        for l,r in [x.strip().split(' ') for x in f]:
-            vim.command('iabbrev %s %s' % (l,r))
-EOF
-endfunction
-
-call LoadAbbreviations()
-command UpdateAbbreviations call LoadAbbreviations()
+call rmns#LoadAbbreviations()
+command UpdateAbbreviations call rmns#LoadAbbreviations()
 
 " fix the dark background of comments
 highlight Comment cterm=NONE
