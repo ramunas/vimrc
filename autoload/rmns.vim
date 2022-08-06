@@ -76,3 +76,9 @@ export def SendBufLinesToTerminalBuffer(lnum1: number, lnum2: number)
         redraw
     endfor
 enddef
+
+export def FilterBufferCommand(command: string)
+    var pos = getcurpos()
+    execute ":%!" command
+    setpos('.', pos)
+enddef

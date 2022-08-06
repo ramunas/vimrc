@@ -187,21 +187,11 @@ command ClearTrailingWhitespace normal mx<cr>:keepjumps keeppatterns %s/\s\+$//g
 command! VimRC :e $MYVIMRC
 command! HideGutter sign unplace *
 
-function ClangFormat()
-    let p = getcurpos()
-    :%!clang-format
-    call setpos('.', p)
-endfunction
-command ClangFormat call ClangFormat()
+command ClangFormat call rmns#FilterBufferCommand("clang-format")
+command JsPretty call rmns#FilterBufferCommand("prettier --stdin --parser=babel --tab-width=4")
 
-function JavascriptPretty()
-    let p = getcurpos()
-    :%!prettier --stdin --parser=babel --tab-width=4
-    call setpos('.', p)
-endfunction
-command JsPretty call JavascriptPretty()
-
-" autocmd FileType javascript syntax keyword Statement await async from
+" builtin javascript highlighter is missing keywords
+autocmd FileType javascript syntax keyword Statement await async from
 
 " function DeleteBuffer()
 "     python3 << EOF
