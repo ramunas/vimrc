@@ -193,35 +193,6 @@ command JsPretty call rmns#FilterBufferCommand("prettier --stdin --parser=babel 
 " builtin javascript highlighter is missing keywords
 autocmd FileType javascript syntax keyword Statement await async from
 
-" function DeleteBuffer()
-"     python3 << EOF
-" import vim
-" buf = vim.current.window.buffer
-" win = vim.current.window
-" if len(vim.buffers) == 1:
-"     vim.command("enew")
-"
-" nextbuffer = None
-" for b in vim.buffers:
-"     if b.number != buf.number:
-"         nextbuffer = b
-"         break
-"
-" if nextbuffer == None:
-"     vim.command("bdelete")
-" else:
-"     for w in vim.windows:
-"         if w.buffer.number == buf.number:
-"             vim.current.window = w
-"             vim.command("buffer %d" % nextbuffer.number)
-"     vim.current.window = win
-"
-"     vim.command("bwipeout %d" % buf.number)
-" EOF
-" endfunction
-
-" command Bdelete call DeleteBuffer()
-
 command Bdelete call rmns#DeleteBuffer2()
 command -nargs=1 Info :call rmns#ShowGnuInfoDocPage('<args>')
 command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
