@@ -92,6 +92,9 @@ runtime ftplugin/man.vim
 " set background=light
 " colorscheme solarized
 
+if &term == 'xterm-256color'
+    set termguicolors
+endif
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_vert_split='blue'
 " Colors for XTerm: https://github.com/morhetz/gruvbox-contrib/blob/master/xresources/gruvbox-dark.xresources
