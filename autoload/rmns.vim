@@ -35,7 +35,7 @@ export def DeleteBuffer2()
     endif
 
     execute "buffer" nextBuf
-    execute "bdelete" currBuf
+    execute "bwipeout" currBuf
 enddef
 
 
