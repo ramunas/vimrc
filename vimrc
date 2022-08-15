@@ -77,7 +77,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 Plug 'ramunas/vim-select'
-nnoremap <leader>b :call Buffers()<cr>
+" nnoremap <leader>b :call Buffers()<cr>
+nnoremap <leader>b :ShowBufferSelection<cr>
 nnoremap <leader>f :call Files()<cr>
 nnoremap <leader>g :call GitFiles()<cr>
 autocmd FileType Select let b:coc_suggest_disable = 1
@@ -182,9 +183,10 @@ command TN :tabnew
 command Tn :tabnew
 
 autocmd BufNewFile,BufRead *.ML setf sml
+autocmd BufNewFile,BufRead *.tex set ft=tex
+
 autocmd FileType qf map <buffer> q :bd<cr>
 autocmd FileType help map <buffer> q :bd<cr>
-autocmd BufNewFile,BufRead *.tex set ft=tex
 
 command ClearTrailingWhitespace normal mx<cr>:keepjumps keeppatterns %s/\s\+$//g<cr>`x
 command! VimRC :e $MYVIMRC
