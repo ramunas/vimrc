@@ -22,12 +22,12 @@ call plug#begin()
 "
 Plug 'morhetz/gruvbox'
 " Plug 'junegunn/seoul256.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'sonph/onehalf', {'rtp' : 'vim' }
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'sonph/onehalf', {'rtp' : 'vim' }
 " Plug 'rakr/vim-one'
 " Plug 'nightsense/carbonized'
 " Plug 'rakr/vim-two-firewatch'
-Plug 'jnurmine/Zenburn'
+" Plug 'jnurmine/Zenburn'
 
 Plug 'tomtom/tcomment_vim'
 " tcomment
@@ -93,9 +93,9 @@ runtime ftplugin/man.vim
 " set background=light
 " colorscheme solarized
 
-if &term == 'xterm-256color'
-    set termguicolors
-endif
+" if &term == 'xterm-256color'
+"     set termguicolors
+" endif
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_vert_split='blue'
 " Colors for XTerm: https://github.com/morhetz/gruvbox-contrib/blob/master/xresources/gruvbox-dark.xresources
