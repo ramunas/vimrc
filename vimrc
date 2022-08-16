@@ -80,7 +80,8 @@ Plug 'ramunas/vim-select'
 " nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>b :ShowBufferSelection<cr>
 nnoremap <leader>f :call Files()<cr>
-nnoremap <leader>g :call GitFiles()<cr>
+nnoremap <leader>g :ShowGitSelection<cr>
+" nnoremap <leader>g :call GitFiles()<cr>
 autocmd FileType Select let b:coc_suggest_disable = 1
 
 call plug#end()
