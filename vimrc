@@ -77,13 +77,14 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 Plug 'ramunas/vim-select'
-" nnoremap <leader>b :call Buffers()<cr>
 nnoremap <leader>b :ShowBufferSelection<cr>
-" nnoremap <leader>f :call Files()<cr>
 nnoremap <leader>f :ShowFileSelection<cr>
 nnoremap <leader>g :ShowGitSelection<cr>
-" nnoremap <leader>g :call GitFiles()<cr>
 autocmd FileType Select let b:coc_suggest_disable = 1
+
+command -nargs=1 Grep :ShowGrepList <args>
+command -nargs=1 GitGrep :ShowGitGrepList <args>
+command -nargs=1 GitGrepRoot :ShowGitGrepRootList <args>
 
 call plug#end()
 
