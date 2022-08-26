@@ -157,7 +157,6 @@ map <leader>n :nohlsearch<cr>
 map <leader>m <leader>n
 
 " Some basic mappings
-map Y y$
 map K k
 imap <c-a> <c-o><home>
 imap <c-e> <c-o><end>
@@ -172,6 +171,11 @@ cnoremap <c-e> <end>
 cnoremap <c-f> <right>
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
+
+
+" copy&paste to/from clipboard
+map Y "+y
+map P "+p
 
 map <c-j> <c-w>-
 map <c-k> <c-w>+
@@ -196,7 +200,7 @@ command! VimRC :e $MYVIMRC
 command! HideGutter sign unplace *
 
 command ClangFormat call rmns#FilterBufferCommand("clang-format")
-command JsPretty call rmns#FilterBufferCommand("prettier --stdin --parser=babel --tab-width=4")
+command! JsPretty call rmns#FilterBufferCommand("prettier --parser=babel --tab-width=4")
 
 " builtin javascript highlighter is missing keywords
 autocmd FileType javascript syntax keyword Statement await async from
