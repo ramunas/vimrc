@@ -66,7 +66,7 @@ Plug 'tpope/vim-eunuch'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 autocmd FileType cpp,c,python map <buffer> <c-]> <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <leader>s :CocList symbols<cr>
@@ -175,9 +175,13 @@ cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 
 
+map Y y$
+
 " copy&paste to/from clipboard
-map Y "+y
-map P "+p
+map gy "+y
+map gp "+p
+map gP "+P
+
 
 map <c-j> <c-w>-
 map <c-k> <c-w>+
