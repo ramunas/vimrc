@@ -18,6 +18,8 @@ endif
 
 call plug#begin()
 
+Plug 'ntessore/unicode-math.vim'
+
 " colorschemes
 "
 Plug 'morhetz/gruvbox'
