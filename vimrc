@@ -24,13 +24,14 @@ Plug 'ntessore/unicode-math.vim'
 "
 Plug 'morhetz/gruvbox'
 " Plug 'junegunn/seoul256.vim'
-" Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 " Plug 'sonph/onehalf', {'rtp' : 'vim' }
 " Plug 'rakr/vim-one'
 " Plug 'nightsense/carbonized'
 " Plug 'rakr/vim-two-firewatch'
 " Plug 'jnurmine/Zenburn'
-
+Plug 'sainnhe/everforest'
+Plug 'sainnhe/gruvbox-material'
 Plug 'tomtom/tcomment_vim'
 " tcomment
 map <leader>cc gcc
@@ -94,9 +95,9 @@ call plug#end()
 " Load man page plugin
 runtime ftplugin/man.vim
 
-" let g:solarized_termcolors=256
-" set background=light
-" colorscheme solarized
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
 
 " if &term == 'xterm-256color'
 "     set termguicolors
@@ -104,15 +105,21 @@ runtime ftplugin/man.vim
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_vert_split='blue'
 " Colors for XTerm: https://github.com/morhetz/gruvbox-contrib/blob/master/xresources/gruvbox-dark.xresources
-set background=dark
+" set background=dark
 " set background=light
-colorscheme gruvbox
+" colorscheme gruvbox
+
+" set background=light
+" colorscheme gruvbox-material
 
 " set background=light
 " colorscheme onehalflight
 
 " set background=light
 " colorscheme carbonized-light
+
+" set background=light
+" colorscheme everforest
 
 syntax enable
 filetype on
