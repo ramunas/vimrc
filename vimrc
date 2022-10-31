@@ -26,12 +26,8 @@ Plug 'morhetz/gruvbox'
 " Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
 " Plug 'sonph/onehalf', {'rtp' : 'vim' }
-" Plug 'rakr/vim-one'
-" Plug 'nightsense/carbonized'
-" Plug 'rakr/vim-two-firewatch'
-" Plug 'jnurmine/Zenburn'
-Plug 'sainnhe/everforest'
-Plug 'sainnhe/gruvbox-material'
+Plug 'habamax/vim-sugarlily'
+
 Plug 'tomtom/tcomment_vim'
 " tcomment
 map <leader>cc gcc
@@ -96,8 +92,8 @@ call plug#end()
 runtime ftplugin/man.vim
 
 let g:solarized_termcolors=256
-set background=light
-colorscheme solarized
+" set background=light
+" colorscheme solarized
 
 " if &term == 'xterm-256color'
 "     set termguicolors
@@ -110,16 +106,10 @@ let g:gruvbox_vert_split='blue'
 " colorscheme gruvbox
 
 " set background=light
-" colorscheme gruvbox-material
-
-" set background=light
 " colorscheme onehalflight
 
-" set background=light
-" colorscheme carbonized-light
-
-" set background=light
-" colorscheme everforest
+set background=light
+colorscheme sugarlily
 
 syntax enable
 filetype on
