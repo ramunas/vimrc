@@ -38,7 +38,7 @@ map <leader>t :NERDTree<cr>
 let g:NERDTreeHijackNetrw=0
 
 
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
