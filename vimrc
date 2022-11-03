@@ -109,6 +109,7 @@ let g:gruvbox_vert_split='blue'
 " colorscheme onehalflight
 
 set background=light
+" check the end of the file for a colorschem patch
 colorscheme sugarlily
 
 syntax enable
@@ -255,3 +256,6 @@ command! -range SendToTerm call rmns#SendBufLinesToTerminalBuffer(<line1>, <line
 map gt :SendToTerm<cr>
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+" make the cursor visible on mate terminals
+hi MatchParen ctermfg=0
