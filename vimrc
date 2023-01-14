@@ -85,6 +85,8 @@ command -nargs=1 Grep :ShowGrepList <args>
 command -nargs=1 GitGrep :ShowGitGrepList <args>
 command -nargs=1 GitGrepRoot :ShowGitGrepRootList <args>
 
+Plug 'itchyny/vim-cursorword'
+
 call plug#end()
 
 
