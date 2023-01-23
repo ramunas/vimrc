@@ -1,3 +1,4 @@
 {
-    "diagnostic.virtualText": false
+    "diagnostic.virtualText": false,
+    "inlayHint.enable": false
 }
