@@ -227,6 +227,19 @@ endif
 " call rmns#LoadAbbreviations()
 " command UpdateAbbreviations call rmns#LoadAbbreviations()
 set keymap=unicode-math
+lmap \x ×
+lmap \a α
+lmap \b β
+lmap \l λ
+lmap \L Λ
+lmap \g γ
+lmap \G Γ
+lmap \-> →
+lmap \=> ⇒
+lmap \def ≝
+lmap \[ ⟦
+lmap \] ⟧
+lmap \iso ≅
 " set iminsert=0
 " set imsearch=-1
 
