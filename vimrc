@@ -224,8 +224,11 @@ if getenv('TERM_PROGRAM') =~ 'Apple_Terminal'
     let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
 endif
 
-call rmns#LoadAbbreviations()
-command UpdateAbbreviations call rmns#LoadAbbreviations()
+" call rmns#LoadAbbreviations()
+" command UpdateAbbreviations call rmns#LoadAbbreviations()
+set keymap=unicode-math
+" set iminsert=0
+" set imsearch=-1
 
 " fix the dark background of comments
 highlight Comment cterm=NONE
