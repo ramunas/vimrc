@@ -238,12 +238,19 @@ lmap \l λ
 lmap \L Λ
 lmap \g γ
 lmap \G Γ
+lmap \e ε
 lmap \-> →
+lmap \ra →
+lmap \la ←
 lmap \=> ⇒
+lmap \Ra ⇒
 lmap \def ≝
 lmap \[ ⟦
 lmap \] ⟧
+lmap \( ⦅
+lmap \) ⦆
 lmap \iso ≅
+lmap \. ⋅
 " set iminsert=0
 " set imsearch=-1
 
