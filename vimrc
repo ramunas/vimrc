@@ -32,7 +32,7 @@ Plug 'tomtom/tcomment_vim'
 " tcomment
 map <leader>cc gcc
 
-Plug 'vim-scripts/Align'
+" Plug 'vim-scripts/Align'
 Plug 'scrooloose/nerdtree'
 map <leader>t :NERDTree<cr>
 let g:NERDTreeHijackNetrw=0
@@ -68,9 +68,10 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <leader>s :CocList symbols<cr>
 command CocHover :call CocActionAsync('doHover')
-command CocSwitchHeader :execute 'edit' CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})
-nnoremap <leader>h :CocSwitchHeader<cr>
+" command CocSwitchHeader :execute 'edit' CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})
+" nnoremap <leader>h :CocSwitchHeader<cr>
 
+nnoremap <leader>h :CocCommand clangd.switchSourceHeader<cr>
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -182,6 +183,9 @@ map gy "+y
 map gp "+p
 map gP "+P
 
+map ,tt :terminal<cr>
+map ,tv :vertical terminal<cr>
+
 
 map <c-j> <c-w>-
 map <c-k> <c-w>+
@@ -226,7 +230,7 @@ endif
 
 " call rmns#LoadAbbreviations()
 " command UpdateAbbreviations call rmns#LoadAbbreviations()
-set keymap=unicode-math
+" set keymap=unicode-math
 lmap \x ×
 lmap \a α
 lmap \b β
@@ -277,3 +281,14 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 " make the cursor visible on mate terminals
 hi MatchParen ctermfg=0
+
+" fix my broken mac keyboard for now
+map § `
+map ± ~
+imap § `
+imap ± ~
+cmap § `
+cmap ± ~
+tmap § `
+tmap ± ~
+
