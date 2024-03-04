@@ -299,3 +299,6 @@ cmap ± ~
 tmap § `
 tmap ± ~
 
+command -nargs=1 -bar Z :execute "cd " trim(system("zoxide query <args>"))
+command -nargs=0 -bar Cdt :execute "cd " trim(system("git rev-parse --show-toplevel"))
+
