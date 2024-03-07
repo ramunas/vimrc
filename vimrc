@@ -305,3 +305,5 @@ highlight ModeMsg ctermbg=231 ctermfg=167
 command -nargs=1 -bar Z :execute "cd " trim(system("zoxide query <args>"))
 command -nargs=0 -bar Cdt :execute "cd " trim(system("git rev-parse --show-toplevel"))
 
+command! -bar -nargs=0 Tb :let s:bn=bufnr() | :tabnew | :execute s:bn . "b"
+
