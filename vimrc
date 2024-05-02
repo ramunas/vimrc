@@ -199,6 +199,15 @@ map <c-t><c-t> :tabnext<cr>
 command TN :tabnew
 command Tn :tabnew
 
+function s:open_tab_with_buffer()
+    let l:bufnr = bufnr()
+    tabnew
+    exec l:bufnr . "buffer"
+endfunction
+
+command To call s:open_tab_with_buffer()
+command TO call s:open_tab_with_buffer()
+
 autocmd BufNewFile,BufRead *.ML setf sml
 autocmd BufNewFile,BufRead *.tex set ft=tex
 
@@ -305,3 +314,4 @@ highlight ModeMsg ctermbg=231 ctermfg=167
 command -nargs=1 -bar Z :execute "cd " trim(system("zoxide query <args>"))
 command -nargs=0 -bar Cdt :execute "cd " trim(system("git rev-parse --show-toplevel"))
 
+set rtp+=/opt/homebrew/opt/fzf
