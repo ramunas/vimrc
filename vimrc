@@ -15,6 +15,9 @@ if empty(glob(s:plug_path))
     autocmd VimEnter * PlugInstall --sync
 endif
 
+if &term == 'xterm-kitty'
+    set termguicolors
+endif
 
 call plug#begin()
 
@@ -25,8 +28,11 @@ Plug 'ntessore/unicode-math.vim'
 Plug 'morhetz/gruvbox'
 " Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
-" Plug 'sonph/onehalf', {'rtp' : 'vim' }
+Plug 'lifepillar/vim-solarized8'
+Plug 'sonph/onehalf', {'rtp' : 'vim' }
 Plug 'habamax/vim-sugarlily'
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/everforest'
 
 Plug 'tomtom/tcomment_vim'
 " tcomment
@@ -94,26 +100,22 @@ call plug#end()
 " Load man page plugin
 runtime ftplugin/man.vim
 
-let g:solarized_termcolors=256
 " set background=light
-" colorscheme solarized
+" colorscheme solarized8_flat
 
-" if &term == 'xterm-256color'
-"     set termguicolors
-" endif
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_vert_split='blue'
-" Colors for XTerm: https://github.com/morhetz/gruvbox-contrib/blob/master/xresources/gruvbox-dark.xresources
-" set background=dark
+
 " set background=light
-" colorscheme gruvbox
+set background=dark
+colorscheme gruvbox
 
 " set background=light
 " colorscheme onehalflight
 
-set background=light
+" set background=light
 " check the end of the file for a colorschem patch
-colorscheme sugarlily
+" colorscheme sugarlily
 
 syntax enable
 filetype on
@@ -231,7 +233,7 @@ command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
 autocmd FileType cpp,xml setlocal matchpairs+=<:>
 autocmd FileType cmake setlocal sts=2 | setlocal sw=2
 
-if getenv('TERM_PROGRAM') =~ 'Apple_Terminal'
+if getenv('TERM_PROGRAM') =~ 'Apple_Terminal' || &term == 'xterm-kitty'
     let &t_SI ="\e[5 q" "SI = INSERT mode
     let &t_SR ="\e[4 q" "SR = REPLACE mode
     let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
