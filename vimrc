@@ -1,8 +1,8 @@
 let mapleader = ","
 
 " solves the problem of ouputing these raw in gnome-terminal
-let &t_TI = ""
-let &t_TE = ""
+" let &t_TI = ""
+" let &t_TE = ""
 
 set nocompatible
 
