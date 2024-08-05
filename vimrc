@@ -17,6 +17,16 @@ endif
 
 if &term == 'xterm-kitty'
     set termguicolors
+
+    " Window title
+    let &t_ST = "\e[22;2t"
+    let &t_RT = "\e[23;2t"
+
+    " vim hardcodes background color erase even if the terminfo file does
+    " not contain bce. This causes incorrect background rendering when
+    " using a color theme with a background color in terminals such as
+    " kitty that do not support background color erase.
+    let &t_ut=''
 endif
 
 call plug#begin()
@@ -101,14 +111,21 @@ call plug#end()
 runtime ftplugin/man.vim
 
 " set background=light
-" colorscheme solarized8_flat
+" colorscheme solarized8
 
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_vert_split='blue'
 
 " set background=light
+" set background=dark
+" colorscheme gruvbox
+
+" let g:everforest_better_performance = 1
+let g:everforest_background = 'soft'
+let g:everforest_enable_italic = 1
 set background=dark
-colorscheme gruvbox
+colorscheme everforest
+
 
 " set background=light
 " colorscheme onehalflight
@@ -267,6 +284,12 @@ lmap \. ⋅
 
 " fix the dark background of comments
 highlight Comment cterm=NONE
+
+if g:colors_name == 'everforest'
+    " hi VertSplit guibg=#434f55
+endif
+
+set fillchars+=vert:┃
 
 function s:install_my_coc_packages()
     CocInstall coc-sh
