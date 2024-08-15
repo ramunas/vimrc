@@ -15,7 +15,7 @@ if empty(glob(s:plug_path))
     autocmd VimEnter * PlugInstall --sync
 endif
 
-if &term == 'xterm-kitty'
+if &term == 'xterm-kitty' || $VIM_TERM_KITTY == 1
     set termguicolors
 
     " Window title
