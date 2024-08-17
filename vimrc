@@ -178,8 +178,7 @@ set tags=./tags,./../tags
 map <leader>n :nohlsearch<cr>
 map <leader>m <leader>n
 
-" Some basic mappings
-map K k
+" map K k
 imap <c-a> <c-o><home>
 imap <c-e> <c-o><end>
 imap <c-f> <right>
@@ -342,3 +341,14 @@ command -nargs=0 -bar Cdt :execute "cd " trim(system("git rev-parse --show-tople
 command! -bar -nargs=0 Tb :let s:bn=bufnr() | :tabnew | :execute s:bn . "b"
 
 set rtp+=/opt/homebrew/opt/fzf
+
+nnoremap <silent> K :call ShowDocumentation()<CR>
+" Show hover when provider exists, fallback to vim's builtin behavior.
+function! ShowDocumentation()
+    if CocAction('hasProvider', 'hover')
+        call CocActionAsync('definitionHover')
+    else
+        call feedkeys('K', 'in')
+    endif
+endfunction
+
