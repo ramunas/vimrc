@@ -293,7 +293,8 @@ set fillchars+=vert:┃
 function s:install_my_coc_packages()
     CocInstall coc-sh
     CocInstall coc-clangd
-    CocInstall coc-python
+    " CocInstall coc-python
+    CocInstall coc-pyright
     CocInstall coc-texlab
     CocInstall coc-json
     CocInstall coc-tsserver
