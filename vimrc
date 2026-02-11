@@ -1,9 +1,5 @@
 let mapleader = ","
 
-" solves the problem of ouputing these raw in gnome-terminal
-" let &t_TI = ""
-" let &t_TE = ""
-
 set nocompatible
 
 " install Plug if not instaled
@@ -15,19 +11,7 @@ if empty(glob(s:plug_path))
     autocmd VimEnter * PlugInstall --sync
 endif
 
-if &term == 'xterm-kitty' || $VIM_TERM_KITTY == 1
-    set termguicolors
-
-    " Window title
-    let &t_ST = "\e[22;2t"
-    let &t_RT = "\e[23;2t"
-
-    " vim hardcodes background color erase even if the terminfo file does
-    " not contain bce. This causes incorrect background rendering when
-    " using a color theme with a background color in terminals such as
-    " kitty that do not support background color erase.
-    let &t_ut=''
-endif
+set termguicolors
 
 call plug#begin()
 
@@ -54,7 +38,7 @@ map <leader>t :NERDTree<cr>
 let g:NERDTreeHijackNetrw=0
 
 
-" Plug 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -72,7 +56,6 @@ let g:airline_symbols.linenr = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#fnamemod = ':t'
-
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
@@ -178,7 +161,6 @@ set tags=./tags,./../tags
 map <leader>n :nohlsearch<cr>
 map <leader>m <leader>n
 
-" map K k
 imap <c-a> <c-o><home>
 imap <c-e> <c-o><end>
 imap <c-f> <right>
@@ -236,8 +218,8 @@ command ClearTrailingWhitespace normal mx<cr>:keepjumps keeppatterns %s/\s\+$//g
 command! VimRC :e $MYVIMRC
 command! HideGutter sign unplace *
 
-command ClangFormat call rmns#FilterBufferCommand("clang-format")
-command! JsPretty call rmns#FilterBufferCommand("prettier --parser=babel --tab-width=4")
+autocmd FileType cpp, c setlocal formatprg=clang-format
+autocmd FileType javascript setlocal formatprg=npx\ prettier\ --parser=babel\ --tab-width=4
 
 " builtin javascript highlighter is missing keywords
 autocmd FileType javascript syntax keyword Statement await async from
@@ -255,10 +237,9 @@ if getenv('TERM_PROGRAM') =~ 'Apple_Terminal' || &term == 'xterm-kitty'
     let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
 endif
 
-" call rmns#LoadAbbreviations()
-" command UpdateAbbreviations call rmns#LoadAbbreviations()
 " set keymap=unicode-math
 lmap \x ×
+lmap \ox ⊗
 lmap \a α
 lmap \b β
 lmap \l λ
@@ -293,7 +274,6 @@ set fillchars+=vert:┃
 function s:install_my_coc_packages()
     CocInstall coc-sh
     CocInstall coc-clangd
-    " CocInstall coc-python
     CocInstall coc-pyright
     CocInstall coc-texlab
     CocInstall coc-json
@@ -315,7 +295,6 @@ command UpdateEverything :UpgradeEverything
 " vimedit file
 autocmd! SigUSR1 * exec "split " . readfile(expand('~/.vim/rfile'))[0]
 
-command! -range SendToTerm call rmns#SendBufLinesToTerminalBuffer(<line1>, <line2>)
 map gt :SendToTerm<cr>
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -336,7 +315,6 @@ tmap ± ~
 " better highlighting of keywords for cmake
 highlight ModeMsg ctermbg=231 ctermfg=167
 
-command -nargs=1 -bar Z :execute "cd " trim(system("zoxide query <args>"))
 command -nargs=0 -bar Cdt :execute "cd " trim(system("git rev-parse --show-toplevel"))
 
 command! -bar -nargs=0 Tb :let s:bn=bufnr() | :tabnew | :execute s:bn . "b"
