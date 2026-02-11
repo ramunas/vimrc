@@ -197,8 +197,11 @@ autocmd FileType javascript setlocal formatprg=npx\ prettier\ --parser=babel\ --
 # builtin javascript highlighter is missing keywords
 autocmd FileType javascript syntax keyword Statement await async from
 
-# TODO: define it here
-command Bdelete call rmns#DeleteBuffer2()
+command Bdelete {
+    var num = bufnr()
+    bnext
+    execute "bdelete " .. num
+}
 
 autocmd FileType cpp,xml setlocal matchpairs+=<:>
 autocmd FileType cmake setlocal sts=2 | setlocal sw=2
