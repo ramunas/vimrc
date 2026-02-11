@@ -1,26 +1,34 @@
-let mapleader = ","
+vim9script
+
+g:mapleader = ","
 
 set nocompatible
 
-" install Plug if not instaled
-let s:plug_path = '~/.vim/autoload/plug.vim'
-let s:plug_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+# install Plug if not instaled
+var plug_path = '~/.vim/autoload/plug.vim'
+var plug_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
-if empty(glob(s:plug_path))
+if empty(glob(plug_path))
     execute "!curl -fLo " s:plug_path "--create-dirs" s:plug_url
     autocmd VimEnter * PlugInstall --sync
 endif
 
 set termguicolors
 
-call plug#begin()
+if getenv('TERM_PROGRAM') =~ 'Apple_Terminal'
+    &t_SI = "\e[5 q" # SI = INSERT mode
+    &t_SR = "\e[4 q" # SR = REPLACE mode
+    &t_EI = "\e[1 q" # EI = NORMAL mode (ELSE)
+endif
+
+
+plug#begin()
 
 Plug 'ntessore/unicode-math.vim'
 
-" colorschemes
-"
+# colorschemes
+#
 Plug 'morhetz/gruvbox'
-" Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'lifepillar/vim-solarized8'
 Plug 'sonph/onehalf', {'rtp' : 'vim' }
@@ -29,46 +37,42 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/everforest'
 
 Plug 'tomtom/tcomment_vim'
-" tcomment
+# tcomment
 map <leader>cc gcc
 
-" Plug 'vim-scripts/Align'
+Plug 'vim-scripts/Align'
 Plug 'scrooloose/nerdtree'
 map <leader>t :NERDTree<cr>
-let g:NERDTreeHijackNetrw=0
+g:NERDTreeHijackNetrw = 0
 
 
 Plug 'bling/vim-airline'
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+    g:airline_symbols = {}
 endif
 
-" powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+# powerline symbols
+g:airline_left_sep = ''
+g:airline_left_alt_sep = ''
+g:airline_right_sep = ''
+g:airline_right_alt_sep = ''
+g:airline_symbols.branch = ''
+g:airline_symbols.readonly = ''
+g:airline_symbols.linenr = ''
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#fnamemod = ':t'
+g:airline#extensions#tabline#enabled = 1
+g:airline#extensions#tabline#formatter = 'default'
+g:airline#extensions#tabline#fnamemod = ':t'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 autocmd FileType cpp,c,python map <buffer> <c-]> <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <leader>s :CocList symbols<cr>
-command CocHover :call CocActionAsync('doHover')
-" command CocSwitchHeader :execute 'edit' CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})
-" nnoremap <leader>h :CocSwitchHeader<cr>
 
 nnoremap <leader>h :CocCommand clangd.switchSourceHeader<cr>
 
@@ -79,7 +83,7 @@ Plug 'ramunas/vim-select'
 nnoremap <leader>b :ShowBufferSelection<cr>
 nnoremap <leader>f :ShowFileSelection<cr>
 nnoremap <leader>g :ShowGitSelection<cr>
-autocmd FileType Select let b:coc_suggest_disable = 1
+autocmd FileType Select b:coc_suggest_disable = 1
 
 command -nargs=1 Grep :ShowGrepList <args>
 command -nargs=1 GitGrep :ShowGitGrepList <args>
@@ -87,35 +91,17 @@ command -nargs=1 GitGrepRoot :ShowGitGrepRootList <args>
 
 Plug 'itchyny/vim-cursorword'
 
-call plug#end()
+plug#end()
 
-
-" Load man page plugin
+# :Man command
 runtime ftplugin/man.vim
 
-" set background=light
-" colorscheme solarized8
 
-let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_vert_split='blue'
-
-" set background=light
-" set background=dark
-" colorscheme gruvbox
-
-" let g:everforest_better_performance = 1
-let g:everforest_background = 'soft'
-let g:everforest_enable_italic = 1
+g:everforest_background = 'soft'
+g:everforest_enable_italic = 1
 set background=light
 colorscheme everforest
 
-
-" set background=light
-" colorscheme onehalflight
-
-" set background=light
-" check the end of the file for a colorschem patch
-" colorscheme sugarlily
 
 syntax enable
 filetype on
@@ -140,23 +126,16 @@ set fileencodings=utf8,latin1
 set softtabstop=4
 set shiftwidth=4
 set tabstop=8
-set expandtab           " Use spaces in place of tabs
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
+set expandtab
+set ruler
+set showcmd
 set laststatus=2
 set cinoptions=g0,(0,l1,J
 set timeout timeoutlen=1000
 set signcolumn=no
 set timeoutlen=500
-
-" turn on the modeline detection in files
-set modeline
-set modelines=10
 set splitright
 set nobackup
-
-" where to search for `tags' file
-set tags=./tags,./../tags
 
 map <leader>n :nohlsearch<cr>
 map <leader>m <leader>n
@@ -178,14 +157,10 @@ cnoremap <c-p> <up>
 
 map Y y$
 
-" copy&paste to/from clipboard
+# copy&paste to/from clipboard
 map gy "+y
 map gp "+p
 map gP "+P
-
-map ,tt :terminal<cr>
-map ,tv :vertical terminal<cr>
-
 
 map <c-j> <c-w>-
 map <c-k> <c-w>+
@@ -199,17 +174,15 @@ map <c-t><c-t> :tabnext<cr>
 command TN :tabnew
 command Tn :tabnew
 
-function s:open_tab_with_buffer()
-    let l:bufnr = bufnr()
+def OpenTabWithCurrentBuffer()
+    var num = bufnr()
     tabnew
-    exec l:bufnr . "buffer"
-endfunction
+    exec "buffer " .. num
+enddef
 
-command To call s:open_tab_with_buffer()
-command TO call s:open_tab_with_buffer()
+command To OpenTabWithCurrentBuffer()
+command TO OpenTabWithCurrentBuffer()
 
-autocmd BufNewFile,BufRead *.ML setf sml
-autocmd BufNewFile,BufRead *.tex set ft=tex
 
 autocmd FileType qf map <buffer> q :bd<cr>
 autocmd FileType help map <buffer> q :bd<cr>
@@ -221,23 +194,16 @@ command! HideGutter sign unplace *
 autocmd FileType cpp, c setlocal formatprg=clang-format
 autocmd FileType javascript setlocal formatprg=npx\ prettier\ --parser=babel\ --tab-width=4
 
-" builtin javascript highlighter is missing keywords
+# builtin javascript highlighter is missing keywords
 autocmd FileType javascript syntax keyword Statement await async from
 
+# TODO: define it here
 command Bdelete call rmns#DeleteBuffer2()
-command -nargs=1 Info :call rmns#ShowGnuInfoDocPage('<args>')
-command! -nargs=1 -range Enclose :s/\%V\(.*\)\%V\(.\)/<args>\1\2<args>/
 
 autocmd FileType cpp,xml setlocal matchpairs+=<:>
 autocmd FileType cmake setlocal sts=2 | setlocal sw=2
 
-if getenv('TERM_PROGRAM') =~ 'Apple_Terminal' || &term == 'xterm-kitty'
-    let &t_SI ="\e[5 q" "SI = INSERT mode
-    let &t_SR ="\e[4 q" "SR = REPLACE mode
-    let &t_EI ="\e[1 q" "EI = NORMAL mode (ELSE)
-endif
-
-" set keymap=unicode-math
+# set keymap=unicode-math
 lmap \x ×
 lmap \ox ⊗
 lmap \a α
@@ -259,19 +225,14 @@ lmap \( ⦅
 lmap \) ⦆
 lmap \iso ≅
 lmap \. ⋅
-" set iminsert=0
-" set imsearch=-1
 
-" fix the dark background of comments
-highlight Comment cterm=NONE
+# # fix the dark background of comments
+# highlight Comment cterm=NONE
 
-if g:colors_name == 'everforest'
-    " hi VertSplit guibg=#434f55
-endif
-
+# add a vertical bar for split windows
 set fillchars+=vert:┃
 
-function s:install_my_coc_packages()
+def Install_my_coc_packages()
     CocInstall coc-sh
     CocInstall coc-clangd
     CocInstall coc-pyright
@@ -279,55 +240,50 @@ function s:install_my_coc_packages()
     CocInstall coc-json
     CocInstall coc-tsserver
     CocInstall coc-cmake
-endfunction
+enddef
 
-command InstallMyCoc call s:install_my_coc_packages()
+command InstallMyCoc Install_my_coc_packages()
 
 command UpgradeEverything :PlugUpgrade | :PlugUpdate | :CocUpdate
 command UpdateEverything :UpgradeEverything
 
 
-" When SIGUSR1 signal is received by vim, open ~/.vim/rfile. This is to open a
-" file from a terminal running within vim.
-" Put the following function in ~/.bashrc
-" vimedit () { echo $PWD/$1 > $HOME/.vim/rfile && kill -SIGUSR1 $PPID; }
-" then from terminal just do:
-" vimedit file
-autocmd! SigUSR1 * exec "split " . readfile(expand('~/.vim/rfile'))[0]
-
-map gt :SendToTerm<cr>
+# When SIGUSR1 signal is received by vim, open ~/.vim/rfile. This is to open a
+# file from a terminal running within vim.
+# Put the following function in ~/.bashrc
+# vimedit () { echo $PWD/$1 > $HOME/.vim/rfile && kill -SIGUSR1 $PPID; }
+# then from terminal just do:
+# vimedit file
+autocmd! SigUSR1 * exec "split " .. readfile(expand('~/.vim/rfile'))[0]
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-" make the cursor visible on mate terminals
-hi MatchParen ctermfg=0
 
-" fix my broken mac keyboard for now
-map § `
-map ± ~
-imap § `
-imap ± ~
-cmap § `
-cmap ± ~
-tmap § `
-tmap ± ~
+# # fix my broken mac keyboard for now
+# map § `
+# map ± ~
+# imap § `
+# imap ± ~
+# cmap § `
+# cmap ± ~
+# tmap § `
+# tmap ± ~
 
-" better highlighting of keywords for cmake
+# better highlighting of keywords for cmake
 highlight ModeMsg ctermbg=231 ctermfg=167
+
+# make the cursor visible on mate terminals
+highlight MatchParen ctermfg=0
 
 command -nargs=0 -bar Cdt :execute "cd " trim(system("git rev-parse --show-toplevel"))
 
-command! -bar -nargs=0 Tb :let s:bn=bufnr() | :tabnew | :execute s:bn . "b"
-
-set rtp+=/opt/homebrew/opt/fzf
-
-nnoremap <silent> K :call ShowDocumentation()<CR>
-" Show hover when provider exists, fallback to vim's builtin behavior.
-function! ShowDocumentation()
-    if CocAction('hasProvider', 'hover')
-        call CocActionAsync('definitionHover')
+def ShowDocumentation()
+    if g:CocAction('hasProvider', 'hover')
+        g:CocActionAsync('definitionHover')
     else
-        call feedkeys('K', 'in')
+        feedkeys('K', 'in')
     endif
-endfunction
+enddef
+
+nnoremap <silent> K <ScriptCmd>ShowDocumentation()<CR>
 
