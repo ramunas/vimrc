@@ -135,3 +135,14 @@ vim.api.nvim_create_user_command('Bdelete', function()
 	vim.api.nvim_buf_delete(bufnr, {})
 end, {})
 
+vim.cmd [[command -nargs=0 -bar Cdt :execute "cd " trim(system("git rev-parse --show-toplevel"))]]
+
+-- When SIGUSR1 signal is received by vim, open ~/.vim/rfile. This is to open a
+-- file from a terminal running within vim.
+-- Put the following function in ~/.bashrc
+-- vimedit () { echo $PWD/$1 > $HOME/.vim/rfile && kill -SIGUSR1 $PPID; }
+-- then from terminal just do:
+-- vimedit file
+-- vim.cmd("autocmd! SigUSR1 * exec 'split ' .. readfile(expand('~/.vim/rfile'))[0]")
+vim.cmd("autocmd! Signal SIGUSR1 exec 'split ' .. readfile(expand('~/.vim/rfile'))[0]")
+
