@@ -90,7 +90,13 @@ vim.cmd 'colorscheme everforest'
 vim.cmd([[map <leader>cc gcc]])
 
 pcall(function()
-	require("telescope").setup()
+	require("telescope").setup({
+		pickers = {
+			find_files = {
+				hidden = true
+			}
+		}
+	})
 
 	local builtin = require('telescope.builtin')
 	vim.keymap.set('n', '<leader>b', builtin.buffers)
