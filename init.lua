@@ -128,6 +128,13 @@ pcall(function()
 	vim.keymap.set('n', '<leader>t', ':NvimTreeOpen<cr>')
 end)
 
+-- vim.treesitter.language.register('tsx', { 'javascriptreact' })
+-- vim.api.nvim_create_autocmd( 'FileType', { pattern = 'javascriptreact',
+-- callback = function(args)
+-- 	vim.treesitter.start()
+-- 	-- vim.treesitter.start(args.buf, 'javascript')
+-- 	--vim.bo[args.buf].syntax = 'on'  -- only if additional legacy syntax is needed
+-- end})
 
 vim.api.nvim_create_user_command('To', function()
 	local bufnr = vim.api.nvim_get_current_buf()
