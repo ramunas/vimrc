@@ -22,12 +22,14 @@ vim.opt.splitright = true
 vim.keymap.set('n', '<leader>n', ':nohlsearch<cr>')
 vim.keymap.set('n', '<leader>m', ':nohlsearch<cr>')
 
-vim.keymap.set('i', '<c-a>', '<c-o><home>')
-vim.keymap.set('i', '<c-e>', '<c-o><end>')
-vim.keymap.set('i', '<c-f>', '<right>')
-vim.keymap.set('i', '<c-b>', '<left>')
-vim.keymap.set('i', '<c-n>', '<down>')
+vim.keymap.set({'i', 'c'}, '<c-a>', '<home>')
+vim.keymap.set({'i', 'c'}, '<c-e>', '<end>')
+vim.keymap.set({'i', 'c'}, '<c-f>', '<right>')
+vim.keymap.set({'i', 'c'}, '<c-b>', '<left>')
+vim.keymap.set({'i', 'c'}, '<c-p>', '<up>')
+vim.keymap.set({'i', 'c'}, '<c-n>', '<down>')
 vim.keymap.set('i', '<c-d>', '<c-o>x')
+vim.keymap.set('c', '<c-d>', '<del>')
 
 vim.keymap.set('n', '<c-j>', '<c-w>-')
 vim.keymap.set('n', '<c-k>', '<c-w>+')
@@ -38,9 +40,6 @@ vim.keymap.set('n', 'Y', 'y$')
 vim.keymap.set('v', 'gy', '"+y')
 vim.keymap.set('n', 'gp', '"+p')
 vim.keymap.set('n', 'gP', '"+P')
-
-vim.keymap.set('c', '<c-p>', '<up>')
-vim.keymap.set('c', '<c-n>', '<down>')
 
 vim.keymap.set('n', '<C-t><C-h>', ':tabprevious<CR>')
 vim.keymap.set('n', '<C-t><C-l>', ':tabnext<CR>')
@@ -76,7 +75,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'itchyny/vim-cursorword'
 Plug 'tomtom/tcomment_vim'
-Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-tree.lua' -- side-bar file browser
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'sainnhe/everforest'
@@ -103,6 +102,7 @@ pcall(function()
 	vim.keymap.set('n', '<leader>b', builtin.buffers)
 	vim.keymap.set('n', '<leader>f', builtin.find_files)
 	vim.keymap.set('n', '<leader>g', builtin.live_grep)
+	vim.keymap.set('n', '<leader>s', builtin.lsp_document_symbols)
 end)
 
 pcall(function()
