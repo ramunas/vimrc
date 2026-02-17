@@ -50,7 +50,7 @@ vim.cmd([[autocmd TermOpen * startinsert]])
 
 vim.cmd([[
 autocmd FileType cpp,c setlocal formatprg=clang-format
-autocmd FileType javascript setlocal formatprg=npx\ prettier\ --parser=babel\ --tab-width\ 4
+autocmd FileType javascript,javascriptreact setlocal formatprg=npx\ prettier\ --parser=babel\ --tab-width\ 4
 ]])
 
 vim.lsp.enable('clangd')
