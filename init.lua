@@ -18,6 +18,10 @@ vim.opt.incsearch = true
 vim.opt.signcolumn = "no"
 vim.opt.splitright = true
 
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 8
 
 vim.keymap.set('n', '<leader>n', ':nohlsearch<cr>')
 vim.keymap.set('n', '<leader>m', ':nohlsearch<cr>')
@@ -49,8 +53,8 @@ vim.keymap.set('t', '<c-w>', '<c-\\><c-n><c-w>')
 vim.cmd([[autocmd TermOpen * startinsert]])
 
 vim.cmd([[
-autocmd FileType cpp,c setlocal formatprg=clang-format
-autocmd FileType javascript,javascriptreact setlocal formatprg=npx\ prettier\ --parser=babel\ --tab-width\ 4
+" autocmd FileType cpp,c setlocal formatprg=clang-format
+autocmd FileType javascript,javascriptreact setlocal formatprg=cd\ %:h\ &&\ npx\ prettier\ --parser=babel\ --tab-width\ 4
 ]])
 
 vim.lsp.enable('clangd')
