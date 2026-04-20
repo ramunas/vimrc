@@ -50,6 +50,7 @@ vim.keymap.set('n', '<C-t><C-l>', ':tabnext<CR>')
 vim.keymap.set('n', '<C-t><C-t>', ':tabnext<CR>')
 
 vim.keymap.set('t', '<c-w>', '<c-\\><c-n><c-w>')
+vim.keymap.set('t', '<c-w>N', '<c-\\><c-n>')
 vim.cmd([[autocmd TermOpen * startinsert]])
 
 vim.cmd([[
