@@ -23,6 +23,8 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.tabstop = 8
 
+vim.opt.autocomplete = true
+
 vim.keymap.set('n', '<leader>n', ':nohlsearch<cr>')
 vim.keymap.set('n', '<leader>m', ':nohlsearch<cr>')
 
